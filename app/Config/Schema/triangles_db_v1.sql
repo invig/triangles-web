@@ -1,0 +1,93 @@
+CREATE TABLE episodes (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  `podcast_id` INT(20) UNSIGNED NOT NULL,
+  `url` VARCHAR(200) DEFAULT NULL,
+  `title` VARCHAR(200) DEFAULT NULL,
+  `description` VARCHAR(200) DEFAULT NULL,
+  `episode_number` INT DEFAULT NULL,
+  `episode_length` FLOAT DEFAULT NULL,
+  `episode_date` DATETIME DEFAULT NULL,
+  `shownotes` VARCHAR(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE podcasts (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  `title` VARCHAR(200) DEFAULT NULL,
+  `author` VARCHAR(200) DEFAULT NULL,
+  `artwork_url` VARCHAR(500) DEFAULT NULL,
+  `description` VARCHAR(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE podcasts_episodes (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `podcast_id` INT(20) UNSIGNED NOT NULL,
+  `episode_id` INT(20) UNSIGNED NOT NULL,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE podcasts_feeds (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `podcast_id` INT(20) UNSIGNED NOT NULL,
+  `feed_id` INT(20) UNSIGNED NOT NULL,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE feeds (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  `podcast_id` INT(20) UNSIGNED NOT NULL,
+  `url` VARCHAR(500) DEFAULT NULL,
+  `active` VARCHAR(200) DEFAULT NULL,
+  `fetched` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE users (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  `email` VARCHAR(100) DEFAULT NULL,
+  `username` VARCHAR(50) DEFAULT NULL,
+  `password` VARCHAR(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE friends (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  `user_id` INT(20) UNSIGNED NOT NULL,
+  `friend_user_id` INT(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE users_podcasts (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT(20) UNSIGNED NOT NULL,
+  `podcast_id` INT(20) UNSIGNED NOT NULL,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE plays (
+  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created` DATETIME DEFAULT NULL,
+  `modified` DATETIME DEFAULT NULL,
+  `user_id` INT(20) UNSIGNED NOT NULL,
+  `episode_id` INT(20) UNSIGNED NOT NULL,
+  `position` VARCHAR(50) DEFAULT NULL,
+  `finished_playing` TINYINT(1) DEFAULT 0,
+  PRIMARY KEY (`id`)
+);
