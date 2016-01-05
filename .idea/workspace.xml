@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="96fbd5dd-6746-45a9-8ea6-3f90f4f83c27" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Plugin/TestPluginTwo/Console/Templates/empty" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Utility/TestAppEngine.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/Test/MyTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/Test/hello.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/css/test_asset.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/img/test.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/img/test_2.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/sample/configure_test_vendor_sample.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/somename/some.name.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/Vendor/welcome.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/extended_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/extended_missing_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/html_call.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/nocache/contains_nocache.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/nocache/plain.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/nocache/sub1.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/nocache/sub2.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/parent_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/session_helper.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/test_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/test_element.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Elements/type_check.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/html/custom.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/html/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/html/html.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/html/image.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/html/japanese.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/html/nested_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/text/custom.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/text/custom_helper.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/text/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/text/japanese.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Emails/text/wide.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Errors/error400.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Errors/error500.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Helper/BananaHelper.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/Emails/html/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/Emails/html/japanese.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/Emails/html/thin.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/Emails/text/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/Emails/text/japanese.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/ajax.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/ajax2.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/banana.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/cache_empty_sections.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/cache_layout.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/flash.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/js/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/json/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/multi_cache.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/rss/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Layouts/xml/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Pages/extract.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Pages/home.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Pages/page.home.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/alt_ext.alt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/cache_empty_sections.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/cache_form.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/extend_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/extend_loop.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/extend_loop_inner.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/extend_missing_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/extend_self.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/extend_with_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/helper_overwrite.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/json/index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/multiple_nocache.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/nested_extends.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/nocache_multiple_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/open_block.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/parent_1.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/parent_2.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/parent_view.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/scaffold.form.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/sequencial_nocache.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/test_nocache_tags.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Posts/xml/index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Scaffolds/empty" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/TestsApps/index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/TestsApps/json/index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Elements/test_element.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Emails/text/themed.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Layouts/default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Plugin/TestPlugin/Emails/text/test_plugin_tpl.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Plugin/TestPlugin/Layouts/plugin_default.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Plugin/TestPlugin/Tests/index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Posts/index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Posts/scaffold.index.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/Posts/themed.ctp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/css/test_asset.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/css/theme_webroot.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/flash/theme_test.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/img/cake.power.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/img/test.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/js/one/theme_one.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/js/theme.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/pdfs/theme_test.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/View/Themed/TestTheme/webroot/space image.text" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/tmp/empty" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/webroot/img/cake.power.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/webroot/theme/test_theme/css/theme_webroot.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/webroot/theme/test_theme/css/webroot_test.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/webroot/theme/test_theme/img/cake.power.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Test/test_app/webroot/theme/test_theme/img/test.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/CakeTestCase.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/CakeTestLoader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/CakeTestRunner.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/CakeTestSuite.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/CakeTestSuiteCommand.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/CakeTestSuiteDispatcher.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/ControllerTestCase.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Coverage/BaseCoverageReport.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Coverage/HtmlCoverageReport.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Coverage/TextCoverageReport.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Fixture/CakeFixtureManager.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Fixture/CakeTestFixture.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Fixture/CakeTestModel.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Reporter/CakeBaseReporter.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Reporter/CakeHtmlReporter.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/Reporter/CakeTextReporter.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/templates/footer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/templates/header.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/templates/menu.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/templates/missing_connection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/templates/phpunit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/TestSuite/templates/xdebug.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Utility/CakeNumber.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Utility/CakeTime.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Cake/Utility/ClassRegistry.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Config/Schema/triangles_db_v1.sql" afterPath="$PROJECT_DIR$/app/Config/Schema/triangles_db_v1.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Controller/AppController.php" afterPath="$PROJECT_DIR$/app/Controller/AppController.php" />
+    </list>
+    <ignored path="triangles-web.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="triangles-web" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.5229885">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Config/database.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-43.076923">
+                  <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="error.log" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/tmp/logs/error.log">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="triangles_db_v1.sql" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Config/Schema/triangles_db_v1.sql">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/View/Podcasts/index.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PodcastsController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Controller/PodcastsController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-0.051150896">
+                  <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EpisodeFeedComponent.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Controller/Component/EpisodeFeedComponent.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
+            <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e0c000a7-2f93-41f1-a3ea-0bf405581784/console.sql">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-3.2894056">
+                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/Config/database.php" />
+        <option value="$PROJECT_DIR$/app/tmp/logs/error.log" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/e0c000a7-2f93-41f1-a3ea-0bf405581784/console.sql" />
+        <option value="$PROJECT_DIR$/app/Config/Schema/triangles_db_v1.sql" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="10" />
+    <option name="y" value="33" />
+    <option name="width" value="1260" />
+    <option name="height" value="757" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triangles-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Schema" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="96fbd5dd-6746-45a9-8ea6-3f90f4f83c27" name="Default" comment="" />
+      <created>1440820177812</created>
+      <option name="number" value="Default" />
+      <updated>1440820177812</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="10" y="33" width="1260" height="757" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33082706" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16995074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.036124796" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/Config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/tmp/logs/error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/View/Podcasts/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/PodcastsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/Component/EpisodeFeedComponent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/PlaysController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/FeedsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Episode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Config/Schema/triangles_db_v1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/tmp/logs/error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Config/Schema/triangles_db_v1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/View/Podcasts/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/PodcastsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/Component/EpisodeFeedComponent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/PlaysController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/FeedsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Episode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-43.076923">
+          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/tmp/logs/error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/View/Podcasts/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/EpisodesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Podcast.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22838499">
+          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Episode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/FeedsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/PlaysController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/Component/EpisodeFeedComponent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controller/PodcastsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.051150896">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Config/Schema/triangles_db_v1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e0c000a7-2f93-41f1-a3ea-0bf405581784/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2894056">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

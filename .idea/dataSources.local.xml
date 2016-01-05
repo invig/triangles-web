@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - triangles@localhost" uuid="e0c000a7-2f93-41f1-a3ea-0bf405581784">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>triangles.*</schema-pattern>
+      <default-schemas>triangles.*</default-schemas>
+    </data-source>
+  </component>
+</project>
