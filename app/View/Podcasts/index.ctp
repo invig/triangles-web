@@ -9,7 +9,11 @@
 				$podcast = $users_podcast['Podcast'];
 				//TODO: Add link to podcast episode list
 				?>
-				<li style="margin:10px"><a class="th" href=""> <img src="<?php echo $podcast['artwork']; ?> " height="120px" width="120px"> </a></li>
+				<li style="margin:10px">
+					<a class="th" href="">
+						<img src="<?php echo $podcast['artwork_url']; ?> " height="120px" width="120px">
+					</a>
+				</li>
 				<?php				
 			}
 			?>

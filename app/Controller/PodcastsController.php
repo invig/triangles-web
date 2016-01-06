@@ -22,7 +22,7 @@ class PodcastsController extends AppController {
 		
 	}
 
-	private function create_feed($podcast_id, String $feed_url) {
+	private function create_feed($podcast_id, $feed_url) {
 		$this->Feed->create();
 		$feed_metadata = array(
 			'podcast_id' => $podcast_id,
@@ -49,7 +49,6 @@ class PodcastsController extends AppController {
 				'conditions' => array(
 					'OR' => array(
 						'title' => $podcast_feed_xml_array['rss']['channel']['title'],
-						'link' => $podcast_feed_xml_array['rss']['channel']['title']
 					)
 				)
 			));
@@ -60,11 +59,10 @@ class PodcastsController extends AppController {
 				$this->Podcast->create();
 				$podcast_metadata = array(
 					'title' => $podcast_feed_xml_array['rss']['channel']['title'],
-					'link' => $podcast_feed_xml_array['rss']['channel']['link'],
+					'website_url' => $podcast_feed_xml_array['rss']['channel']['link'],
 					'author' => $podcast_feed_xml_array['rss']['channel']['itunes:author'],
 					'description' => $podcast_feed_xml_array['rss']['channel']['description'],
-					'language' => $podcast_feed_xml_array['rss']['channel']['language'],
-					'artwork' => $podcast_feed_xml_array['rss']['channel']['itunes:image']['@href']
+					'artwork_url' => $podcast_feed_xml_array['rss']['channel']['itunes:image']['@href']
 				);
 				$this->Podcast->save($podcast_metadata);
 				$podcast_id = $this->Podcast->getLastInsertID();

@@ -56,16 +56,6 @@ class AppController extends Controller {
 	
 	
 	public function isAuthorized($user) {
-		if($user['verified'] == 1) {
-			if (isset($user['role']) && ($user['role'] == 'admin' || $user['role'] == 'user')) {
-				return true;
-			} else {
-				$this->Session->setFlash(__("You don't have permission to perform this action."));							
-			}			
-		} else {
-			$this->Session->setFlash(__("Your account isn't verified. Please check your email!"));				
-		}
-		
-		return false;
+		return true;
 	}
 }

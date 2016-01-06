@@ -6,10 +6,10 @@ CREATE TABLE episodes (
   `url` VARCHAR(200) DEFAULT NULL,
   `title` VARCHAR(200) DEFAULT NULL,
   `description` VARCHAR(200) DEFAULT NULL,
-  `episode_number` INT DEFAULT NULL,
   `episode_length` FLOAT DEFAULT NULL,
   `episode_date` DATETIME DEFAULT NULL,
   `shownotes` VARCHAR(200) DEFAULT NULL,
+  `guid` VARCHAR(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -20,25 +20,8 @@ CREATE TABLE podcasts (
   `title` VARCHAR(200) DEFAULT NULL,
   `author` VARCHAR(200) DEFAULT NULL,
   `artwork_url` VARCHAR(500) DEFAULT NULL,
+  `website_url` VARCHAR(500) DEFAULT NULL,
   `description` VARCHAR(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE podcasts_episodes (
-  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `podcast_id` INT(20) UNSIGNED NOT NULL,
-  `episode_id` INT(20) UNSIGNED NOT NULL,
-  `created` DATETIME DEFAULT NULL,
-  `modified` DATETIME DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE podcasts_feeds (
-  `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `podcast_id` INT(20) UNSIGNED NOT NULL,
-  `feed_id` INT(20) UNSIGNED NOT NULL,
-  `created` DATETIME DEFAULT NULL,
-  `modified` DATETIME DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
