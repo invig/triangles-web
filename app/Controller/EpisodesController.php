@@ -18,7 +18,7 @@ class EpisodesController extends AppController {
            )
         ));
 
-        $episodes = $this->Episode->find('all', array(
+        $unplayed_episodes = $this->Episode->find('all', array(
             'conditions' => array(
                 'podcast_id' => $podcast_id
             ),
@@ -27,8 +27,37 @@ class EpisodesController extends AppController {
             )
         ));
 
+        $episode_ids = array();
+        foreach ($unplayed_episodes as $episode) {
+            array_push($episode_ids, $episode['Episode']['id']);
+        }
+
+        $plays = $this->Play->find('all', array(
+           'conditions' => array(
+               'user_id' => $this->Auth->user('id'),
+               'episode_id' => $episode_ids,
+               'finished_playing' => 1
+           )
+        ));
+
+        // sort the episodes by played status
+        $played_episodes = array();
+        foreach($plays as $play) {
+            array_push($played_episodes, array('Episode'=>$play['Episode']));
+
+            foreach($unplayed_episodes as $key=>$unplayed_episode) {
+                if ($unplayed_episode['Episode']['id'] == $play['Play']['episode_id']) {
+                    unset($unplayed_episodes[$key]);
+                }
+            }
+        }
+
+        $unplayed_episodes = array_values($unplayed_episodes);
+
         $this->set('podcast', $podcast);
-        $this->set('episodes', $episodes);
+        $this->set('played_episodes', $played_episodes);
+        $this->set('unplayed_episodes', $unplayed_episodes);
+
     }
 
     public function play($id) {

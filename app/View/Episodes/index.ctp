@@ -11,11 +11,13 @@
         </div>
     </div>
 </div>
+<?php if (count($unplayed_episodes) > 0) : ?>
 <div class="row">
+    <h3>Unplayed Episodes</h3>
     <div class="small-6 columns small-centered" id="podcasts">
         <ul class="list">
             <?php
-            foreach ($episodes as $episode) {
+            foreach ($unplayed_episodes as $episode) {
             ?>
                 <li class="row">
                     <a class="" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">
@@ -30,3 +32,26 @@
         </ul>
     </div>
 </div>
+<?php endif; ?>
+<?php if (count($played_episodes) > 0) : ?>
+<div class="row">
+    <h3>Played Episodes</h3>
+    <div class="small-6 columns small-centered" id="podcasts">
+        <ul class="list">
+            <?php
+            foreach ($played_episodes as $episode) {
+                ?>
+                <li class="row">
+                    <a class="" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">
+                        <h4><?php echo $episode['Episode']['title']; ?></h4>
+                        <p class="description"><?php echo $episode['Episode']['description']; ?></p>
+                    </a>
+                    <a class=""
+                </li>
+                <?php
+            }
+            ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>
