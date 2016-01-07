@@ -41,6 +41,17 @@ class EpisodesController extends AppController {
 
         $episode = $this->Episode->findById($id);
 
+        $play = $this->Play->find('first', array(
+            'conditions' => array(
+                'user_id' => $this->Auth->user('id'),
+                'episode_id' => $id
+            )
+        ));
+
+        if (isset($play) && !empty($play)) {
+          $this->set('play', $play);
+        }
+
         $this->set('episode', $episode);
     }
 

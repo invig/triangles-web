@@ -25,8 +25,19 @@
     var url = "/plays/update_play_state";
     var episode_id = <?php echo $episode['Episode']['id']; ?>;
     var player = document.getElementById('player');
-    var currentTime = 0;
+    var currentTime = <?php
+        if (isset($play)) {
+            echo $play['Play']['position'];
+        } else {
+            echo 0;
+        }
+        ?>;
     var httpRequest;
+
+    player.addEventListener('canplay', function(e) {
+        console.log('Current time: ' + currentTime);
+        player.fastSeek(currentTime);
+    });
 
     player.addEventListener('timeupdate', function(e) {
         if (player.currentTime > currentTime + 10) {
