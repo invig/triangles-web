@@ -43,3 +43,10 @@
     width:100%;
     display:block;
 }
+
+.played-status-title {
+    padding-bottom:10px;
+    font-size:14pt;
+    color: #666;
+    font-weight:bold;
+}

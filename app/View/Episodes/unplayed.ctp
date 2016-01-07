@@ -1,9 +1,8 @@
 
 <div class="row podcast-preview">
     <div class="small-11 columns">
-
             <h1 class="">
-                Episodes
+                Unplayed Episodes
             </h1>
             <p>
                 Podcasts your subscribed to that are not finished, ordered by date published.

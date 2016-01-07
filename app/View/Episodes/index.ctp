@@ -13,8 +13,8 @@
 </div>
 <?php if (count($unplayed_episodes) > 0) : ?>
 <div class="row">
-    <h3>Unplayed Episodes</h3>
     <div class="small-6 columns small-centered" id="podcasts">
+        <h3 class="row played-status-title">Unplayed Episodes</h3>
         <ul class="list">
             <?php
             foreach ($unplayed_episodes as $episode) {
@@ -35,8 +35,8 @@
 <?php endif; ?>
 <?php if (count($played_episodes) > 0) : ?>
 <div class="row">
-    <h3>Played Episodes</h3>
     <div class="small-6 columns small-centered" id="podcasts">
+        <h3 class="row played-status-title">Played Episodes</h3>
         <ul class="list">
             <?php
             foreach ($played_episodes as $episode) {

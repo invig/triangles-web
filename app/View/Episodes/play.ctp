@@ -59,6 +59,7 @@
 
     player.addEventListener('seeked', function(e) {
        currentTime = player.currentTime;
+        setTimeOnEpisode(currentTime);
     });
 
     function setTimeOnEpisode(time) {

@@ -7,7 +7,6 @@
 			<?php 
 			foreach ($users_podcasts as $users_podcast) {
 				$podcast = $users_podcast['Podcast'];
-				//TODO: Add link to podcast episode list
 				?>
 				<li style="margin:10px">
 					<a class="th" href="<?php echo "/episodes/index/". $podcast['id'] ;?>">

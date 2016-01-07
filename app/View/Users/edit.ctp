@@ -6,15 +6,7 @@
 		<?php 
 		echo $this->Form->input('username', array('label' => 'Change your username:'));
 		echo $this->Form->input("email", array('label' => 'Change your email address:'));
-		
-		if ($isAuthorized){
-			echo $this->Form->input("role", array(
-				"options"=>array("admin"=>"Admin","user"=>"User"),
-				'label' => 'Change your role:'
-			));
-		}
-		
-		echo ($this->Html->link("Reset Password", array('action' => 'reset_password')));
+		echo ($this->Html->link("Reset password", array('action' => 'reset_password')));
 	?>
 	</fieldset>
 	<?php 
