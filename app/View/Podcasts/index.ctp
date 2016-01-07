@@ -10,7 +10,7 @@
 				//TODO: Add link to podcast episode list
 				?>
 				<li style="margin:10px">
-					<a class="th" href="">
+					<a class="th" href="<?php echo "/episodes/index/". $podcast['id'] ;?>">
 						<img src="<?php echo $podcast['artwork_url']; ?> " height="120px" width="120px">
 					</a>
 				</li>

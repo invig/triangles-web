@@ -14,6 +14,7 @@
 		// echo $this->Html->css('cake.generic');
 		echo $this->Html->css('foundation.css');
 		echo $this->Html->script('vendor/modernizr.js');
+		echo $this->Html->css('custom.css');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -25,7 +26,7 @@
 			<nav class="top-bar" data-topbar>
 				<ul class="title-area">
 					<li class="name">
-						<h1><a href="#">Triangles.io</a></h1>
+						<h1><a href="#">Triangles</a></h1>
 					</li>
 					<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
 				</ul>
@@ -34,7 +35,7 @@
 					<?php if ($logged_in) :?>				
 						<ul class="left">
 							<li><?php echo $this->Html->link('Podcasts', array('controller'=>'podcasts', 'action'=>'index')); ?></li>
-							<li><?php echo $this->Html->link('Unplayed', array('controller'=>'podcasts', 'action'=>'unplayed')); ?></li>
+							<li><?php echo $this->Html->link('Unplayed', array('controller'=>'episodes', 'action'=>'unplayed')); ?></li>
 						</ul>
 					<?php endif;?>					
 				   	<ul class="right">

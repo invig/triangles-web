@@ -17,7 +17,8 @@ class FeedsController extends AppController {
 	}
 
 	public function parse_all_feeds() {
-		CakeLog::write('debug', 'parsing all feeds');
+		$this->autoRender = false;
+
 		$feeds = $this->Feed->find('all', array(
 			'conditions' => array(
 				'active' => true
@@ -27,14 +28,24 @@ class FeedsController extends AppController {
 			)
 		));
 
-		CakeLog::write('debug', 'parse_all_feeds -> Feeds: ' . var_export($feeds, true));
-
+		$failed_fetches = array();
 		foreach ($feeds as $feed) {
-			$this->parse_feed($feed);
+			$result = $this->parse_feed($feed);
+
+			if ($result == false) {
+				array_push($failed_fetches, $feed);
+			}
+		}
+
+		if (count($failed_fetches) > 0) {
+			echo "0";
+			CakeLog::write('error', 'parse_all_feeds -> Failed to parse feeds: ' . var_export($failed_fetches, true));
+		} else {
+			echo "1";
 		}
 	}
 
-	private function parse_feed($feed, Array $return_action = null) {
+	private function parse_feed($feed) {
 		$failures = array();
 		CakeLog::write('debug', 'parse_feed -> Feed ID: ' . $feed['Feed']['id']);
 		if (isset($feed) && !empty($feed)) {

@@ -1,0 +1,45 @@
+/** App **/
+
+.list {
+    margin:0;
+    padding:0;
+}
+.list li {
+    list-style: none;
+}
+
+.podcast-preview {
+    padding: 20px 0;
+}
+
+.episode-play-button {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.unplayed-podcast-list li {
+    padding: 10px 0;
+}
+
+.episode-description h4{
+    text-align: center;
+}
+
+.artwork {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.artwork img {
+    max-width: 400px;
+}
+
+.podcast-player-wrapper {
+    padding: 10px;
+    margin: 10px 0;
+}
+.podcast-player {
+    width:100%;
+    display:block;
+}

@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('Xml', 'Utility');
 
 class PodcastsController extends AppController {
-	public $uses = array('Podcast', 'Feed', 'UserPodcast', 'Episode');
+	public $uses = array('Podcast', 'Feed', 'UserPodcast', 'Episode', 'Play');
 	public $components = array('EpisodeFeed');
 	
 	public function beforeFilter() {
@@ -115,6 +115,8 @@ class PodcastsController extends AppController {
 		} else {
 			$this->redirect(array('controller'=>'podcasts','action'=>'index'));
 		}
-	}	
+	}
+
+
 }
 ?>

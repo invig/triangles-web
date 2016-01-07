@@ -51,7 +51,6 @@ class AppController extends Controller {
 	public function beforeFilter() {		
 		parent::beforeFilter();
 		$this->set('logged_in', $this->Auth->loggedIn());
-		$this->set('role', $this->Auth->user('role'));
 	}
 	
 	
