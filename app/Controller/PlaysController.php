@@ -11,6 +11,7 @@ class PlaysController extends AppController {
             $user_id = $this->Auth->user('id');
             $episode_id = $this->request->data['episode_id'];
             $timestamp = $this->request->data['position'];
+            $finished = $this->request->data['finished'];
 
             $play = $this->Play->find('first', array(
                 'conditions' => array(
@@ -30,6 +31,7 @@ class PlaysController extends AppController {
             }
 
             $data['position'] = $timestamp;
+            $data['finished_playing'] = $finished;
 
             if ($this->Play->save($data)) {
                 echo true;

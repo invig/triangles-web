@@ -33,10 +33,19 @@
         }
         ?>;
     var httpRequest;
+    var finished = 0;
+
+    function checkFinished() {
+        if (player.currentTime + 30 >= player.duration && finished == 0) {
+            finished = 1;
+            setTimeOnEpisode(player.currentTime);
+        }
+    }
 
     player.addEventListener('canplay', function(e) {
         console.log('Current time: ' + currentTime);
         player.fastSeek(currentTime);
+        checkFinished();
     });
 
     player.addEventListener('timeupdate', function(e) {
@@ -44,6 +53,8 @@
             setTimeOnEpisode(player.currentTime);
             currentTime = player.currentTime;
         }
+
+        checkFinished();
     });
 
     player.addEventListener('seeked', function(e) {
@@ -51,8 +62,11 @@
     });
 
     function setTimeOnEpisode(time) {
-        makeRequest('episode_id=' + encodeURIComponent(episode_id) + '&position=' + encodeURIComponent(time));
-        console.log('Playing episode with id: ' + episode_id + ' at time: ' + time);
+        makeRequest('episode_id=' + encodeURIComponent(episode_id) +
+                    '&position=' + encodeURIComponent(time) +
+                    '&finished=' + encodeURIComponent(finished)
+        );
+        console.log('Playing episode with id: ' + episode_id + ' at time: ' + time + ' finished: ' + finished);
     }
 
     function makeRequest(sendString) {
@@ -71,7 +85,7 @@
     function alertContents() {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
-                console.log(httpRequest.responseText);
+                console.log('Response: ' + httpRequest.responseText);
             } else {
                 console.log('Failed to save playback position, error:' + httpRequest.status);
             }
