@@ -88,8 +88,9 @@ class EpisodesController extends AppController {
         ));
 
         $finished_ids = array();
+
         foreach ($finished_episodes as $finished_episode) {
-            array_push($finished_ids, $finished_episode['Play']['episode_id']);
+            array_push($finished_ids, $finished_episode);
         }
 
         //Get the unfinished episodes for the current user sorted by published date
