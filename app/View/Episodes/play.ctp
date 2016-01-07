@@ -20,10 +20,13 @@
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
+(function() {
+    var url = "/plays/update_play_state";
     var episode_id = <?php echo $episode['Episode']['id']; ?>;
     var player = document.getElementById('player');
     var currentTime = 0;
+    var httpRequest;
 
     player.addEventListener('timeupdate', function(e) {
         if (player.currentTime > currentTime + 10) {
@@ -32,8 +35,36 @@
         }
     });
 
+    player.addEventListener('seeked', function(e) {
+       currentTime = player.currentTime;
+    });
+
     function setTimeOnEpisode(time) {
-        // TODO: Fire an ajax update.
+        makeRequest('episode_id=' + encodeURIComponent(episode_id) + '&position=' + encodeURIComponent(time));
         console.log('Playing episode with id: ' + episode_id + ' at time: ' + time);
     }
+
+    function makeRequest(sendString) {
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+            console.log('Failed to save playback position');
+            return false;
+        }
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('POST', url);
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        httpRequest.send(sendString);
+    }
+
+    function alertContents() {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+                console.log(httpRequest.responseText);
+            } else {
+                console.log('Failed to save playback position, error:' + httpRequest.status);
+            }
+        }
+    }
+})();
 </script>

@@ -2,8 +2,7 @@
 App::uses('AppModel', 'Model');
 
 class Play extends AppModel {
-	public $belongsTo = array('User');
-	public $hasOne = array('Episode');
+	public $belongsTo = array('User', 'Episode');
 }
 
 ?>
