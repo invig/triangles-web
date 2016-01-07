@@ -8,10 +8,14 @@ class PodcastsController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		// $this->Auth->allow();
+		$this->Auth->allow('index');
 	}
 	
 	public function index() {
+		if ($this->Auth->user() == null) {
+			$this->redirect(array('controller'=>'users','action'=>'login'));
+		}
+
 		$podcasts = $this->UserPodcast->find('all', array(
 			'conditions' => array(
 				'UserPodcast.user_id' => $this->Auth->user('id')

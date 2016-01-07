@@ -19,7 +19,7 @@ class UsersController extends AppController {
 		}
 	}
 	
-	public function logout() { 
+	public function logout() {
 		$this->redirect($this->Auth->logout());
 	}
 	
@@ -46,16 +46,14 @@ class UsersController extends AppController {
 	
 	public function edit($username = null) {
 		// Note: There isn't any admin functionality yet. You can't edit another users account. 
-		
+
 		if (empty($username)) {
 			$username = $this->Auth->user('username');
 		}
 		
 		// Allow admins to edit other users, but anyone else to only edit their own user.
 		if ($username != $this->Auth->user('username')) {
-			if ($this->Auth->user('role') != 'Admin') {
-				throw new ForbiddenException(__('Unauthorised action'));
-			}
+			throw new ForbiddenException(__('Unauthorised action'));
 		}
 		
 		// If their is no user - reject.		
@@ -67,16 +65,16 @@ class UsersController extends AppController {
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
-		
+
 		$this->User->read(null, $id);
-	   
+		unset($this->User->data['User']['password']);
+
 		if ($this->request->is('post') || $this->request->is('put')) {
-			
 			// If the email address changes re-verify
 			if (strcmp($this->User->data['User']['email'], $this->request->data['User']['email']) != 0) {
 				$this->request->data['User']['verified'] = 0;
 			}
-		
+
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('Your profile has been updated.'));
 				$this->redirect(array('action'=>'edit', $username));
@@ -84,16 +82,8 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__("Uh oh, we couldn't save your changes. Please, try again."));
 			}
 		} else {
-			unset($this->User->data['User']['password']);
 			$this->request->data = $this->User->data;
 			$this->set('user', $this->User);
-
-			// The user can change their level if authorised to.
-			if ($this->isAuthorized($this->User->data['User'])) {
-				$this->set('isAuthorized', true);
-			} else {
-				$this->set('isAuthorized', false);
-			}			
 		}
 	}
 	
