@@ -1,6 +1,6 @@
 <?php if (isset($current_episode)) : ?>
 <div class="row">
-		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="small-12 columns th" style="padding:10px 20px 20px; margin:10px;">
+		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="small-12 columns th" style="padding:10px 20px 20px; margin:10px 0;">
 			<h4 class="row" style="margin: 0; padding: 0 0 10px 0;">Recently playing:</h4>
 			<div class="row">
 				<div class="small-2 columns">
