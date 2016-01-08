@@ -27,32 +27,29 @@
 			<div class="top-bar" id="nav">
 				<div class="top-bar-left">
 					<ul class="dropdown menu" data-dropdown-menu>
-						<li class="menu-text"><a href="/">Triangles</a></li>
-<!--						<li class="has-submenu">-->
-<!--							<a href="#">One</a>-->
-<!--							<ul class="submenu menu vertical" data-submenu>-->
-<!--								<li><a href="#">One</a></li>-->
-<!--								<li><a href="#">Two</a></li>-->
-<!--								<li><a href="#">Three</a></li>-->
-<!--							</ul>-->
-<!--						</li>-->
+						<li class="menu-text">Triangles</li>
 						<li><?php echo $this->Html->link('Podcasts', array('controller'=>'podcasts', 'action'=>'index')); ?></li>
 						<li><?php echo $this->Html->link('Unplayed', array('controller'=>'episodes', 'action'=>'unplayed')); ?></li>
+						<li class="has-submenu">
+							<a href="#">User</a>
+							<ul class="submenu menu vertical" data-submenu>
+								<!--nocache-->
+								<?php if ($logged_in) :?>
+									<li><?php echo $this->Html->link('Log out', array('controller'=>'users', 'action'=>'logout')); ?></li>
+									<li><?php echo $this->Html->link('Edit profile', array('controller'=>'users', 'action'=>'edit')); ?></li>
+								<?php else : ?>
+									<li><?php echo $this->Html->link('Log in', array('controller'=>'users', 'action'=>'login')); ?></li>
+									<li><?php echo $this->Html->link('Sign up', array('controller'=>'users', 'action'=>'signup')); ?></li>
+								<?php endif;?>
+								<!--/nocache-->
+							</ul>
+						</li>
 					</ul>
 				</div>
-				<div class="top-bar-right">
-					<ul class="menu">
-						<!--nocache-->
-						<?php if ($logged_in) :?>
-							<li><?php echo $this->Html->link('Log out', array('controller'=>'users', 'action'=>'logout')); ?></li>
-							<li><?php echo $this->Html->link('Edit profile', array('controller'=>'users', 'action'=>'edit')); ?></li>
-						<?php else : ?>
-							<li><?php echo $this->Html->link('Log in', array('controller'=>'users', 'action'=>'login')); ?></li>
-							<li><?php echo $this->Html->link('Sign up', array('controller'=>'users', 'action'=>'signup')); ?></li>
-						<?php endif;?>
-						<!--/nocache-->
-					</ul>
-				</div>
+<!--				<div class="top-bar-right">-->
+<!--					<ul class="dropdown menu" data-dropdown-menu>-->
+<!--					</ul>-->
+<!--				</div>-->
 			</div>
 		</div>
 		<div id="content">
