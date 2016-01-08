@@ -15,7 +15,7 @@
 </div>
 <?php endif; ?>
 <div class="row">
-	<div class="small-4 columns"><h1>Your Podcasts</h1></div>
+	<div class="small-12 columns"><h1>Podcasts</h1></div>
 </div>
 <div class="row">
 	<div class="small-11 columns small-centered" id="podcasts">	
