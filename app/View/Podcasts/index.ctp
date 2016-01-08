@@ -44,9 +44,40 @@
 	</div>
 </div>
 <?php endif; ?>
+
+<ul class="tabs" data-tab>
+	<li class="tab-title active"><a href="#panel1">Tab 1</a></li>
+	<li class="tab-title"><a href="#panel2">Tab 2</a></li>
+	<li class="tab-title"><a href="#panel3">Tab 3</a></li>
+	<li class="tab-title"><a href="#panel4">Tab 4</a></li>
+</ul>
+<div class="tabs-content">
+	<div class="content active" id="panel1">
+		<p>This is the first panel of the basic tab example. You can place all sorts of content here including a grid.</p>
+	</div>
+	<div class="content" id="panel2">
+		<p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+	</div>
+	<div class="content" id="panel3">
+		<p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+	</div>
+	<div class="content" id="panel4">
+		<p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+	</div>
+</div>
+
+
 <div class="row">
 	<div class="small-12 columns small-centered th" id="add_podcast" style="padding:20px;">
 		<h4 style="padding:0 0 20px;">Add a podcast</h4>
+		<?php echo $this->Form->create('Podcast', array('controller'=>'podcast','action'=>'add'));?>
+		<?php echo $this->Form->input('url', array('label' => 'Feed URL:')); ?>
+		<?php echo $this->Form->end(array('class'=>'radius button right', 'label'=>'Add')); ?>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns small-centered th" id="add_podcast" style="padding:20px;">
+		<h4 style="padding:0 0 20px;">Import podcast list from OPML</h4>
 		<?php echo $this->Form->create('Podcast', array('controller'=>'podcast','action'=>'add'));?>
 		<?php echo $this->Form->input('url', array('label' => 'Feed URL:')); ?>
 		<?php echo $this->Form->end(array('class'=>'radius button right', 'label'=>'Add')); ?>
