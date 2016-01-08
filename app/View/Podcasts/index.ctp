@@ -17,6 +17,7 @@
 <div class="row">
 	<div class="small-12 columns"><h1>Podcasts</h1></div>
 </div>
+<?php if (count($users_podcasts) > 0) : ?>
 <div class="row">
 	<div class="small-11 columns small-centered" id="podcasts">	
 		<ul class="inline-list">
@@ -35,6 +36,14 @@
 		</ul>
 	</div>
 </div>
+<?php else: ?>
+<div class="row">
+	<div class="small-12 columns centered">
+		<p>Podcasts added to Triangles will appear here.</p>
+		<?php // TODO: Add a better default state. ?>
+	</div>
+</div>
+<?php endif; ?>
 <div class="row">
 	<div class="small-12 columns small-centered th" id="add_podcast" style="padding:20px;">
 		<h4 style="padding:0 0 20px;">Add a podcast</h4>

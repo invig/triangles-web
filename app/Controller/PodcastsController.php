@@ -26,16 +26,18 @@ class PodcastsController extends AppController {
 
 		// Find the most recently playing episode.
 		$user = $this->User->findById($this->Auth->user('id'));
-		$current_episode = array("Episode" => $user['Episode']);
-		$current_podcast = $this->Podcast->find('first', array(
-			'fields' => array('id', 'artwork_url'),
-			'recursive' => -1,
-			'conditions' => array(
-				'id' => $current_episode['Episode']['podcast_id']
-			)
-		));
-		$current_episode['Podcast'] = $current_podcast['Podcast'];
-		$this->set('current_episode', $current_episode);
+		if (isset($user['Episode']['id']) && ! empty($user['Episode']['id'])) {
+			$current_episode = array("Episode" => $user['Episode']);
+			$current_podcast = $this->Podcast->find('first', array(
+				'fields' => array('id', 'artwork_url'),
+				'recursive' => -1,
+				'conditions' => array(
+					'id' => $current_episode['Episode']['podcast_id']
+				)
+			));
+			$current_episode['Podcast'] = $current_podcast['Podcast'];
+			$this->set('current_episode', $current_episode);
+		}
 	}
 
 	private function create_feed($podcast_id, $feed_url) {
