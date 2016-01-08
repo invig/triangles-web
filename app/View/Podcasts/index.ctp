@@ -36,12 +36,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="small-10 columns small-centered" id="add_podcast">
-		<h3>Add a podcast</h3>
+	<div class="small-12 columns small-centered th" id="add_podcast" style="padding:20px;">
+		<h4 style="padding:0 0 20px;">Add a podcast</h4>
 		<?php echo $this->Form->create('Podcast', array('controller'=>'podcast','action'=>'add'));?>
-		<fieldset>
-			<?php echo $this->Form->input('url', array('label' => 'Feed URL:')); ?>
-		</fieldset>
+		<?php echo $this->Form->input('url', array('label' => 'Feed URL:')); ?>
 		<?php echo $this->Form->end(array('class'=>'radius button right', 'label'=>'Add')); ?>
 	</div>
 </div>
