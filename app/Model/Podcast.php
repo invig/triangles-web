@@ -2,7 +2,7 @@
 App::uses('AppModel', 'Model');
 
 class Podcast extends AppModel {
-	public $hasMany = array('Feed', 'Episode', 'UserPodcast');	
+	public $hasMany = array('Feed', 'Episode', 'UserPodcast');
 }
 
 ?>

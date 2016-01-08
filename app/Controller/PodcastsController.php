@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('Xml', 'Utility');
 
 class PodcastsController extends AppController {
-	public $uses = array('Podcast', 'Feed', 'UserPodcast', 'Episode', 'Play');
+	public $uses = array('Podcast', 'Feed', 'UserPodcast', 'Episode', 'Play', 'User');
 	public $components = array('EpisodeFeed');
 	
 	public function beforeFilter() {
@@ -16,14 +16,26 @@ class PodcastsController extends AppController {
 			$this->redirect(array('controller'=>'users','action'=>'login'));
 		}
 
+		// Fetch the users podcasts
 		$podcasts = $this->UserPodcast->find('all', array(
 			'conditions' => array(
 				'UserPodcast.user_id' => $this->Auth->user('id')
 			)
 		));
-		
 		$this->set('users_podcasts', $podcasts);
-		
+
+		// Find the most recently playing episode.
+		$user = $this->User->findById($this->Auth->user('id'));
+		$current_episode = array("Episode" => $user['Episode']);
+		$current_podcast = $this->Podcast->find('first', array(
+			'fields' => array('id', 'artwork_url'),
+			'recursive' => -1,
+			'conditions' => array(
+				'id' => $current_episode['Episode']['podcast_id']
+			)
+		));
+		$current_episode['Podcast'] = $current_podcast['Podcast'];
+		$this->set('current_episode', $current_episode);
 	}
 
 	private function create_feed($podcast_id, $feed_url) {
@@ -120,7 +132,5 @@ class PodcastsController extends AppController {
 			$this->redirect(array('controller'=>'podcasts','action'=>'index'));
 		}
 	}
-
-
 }
 ?>

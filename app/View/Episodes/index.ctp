@@ -46,7 +46,6 @@
                         <h4><?php echo $episode['Episode']['title']; ?></h4>
                         <p class="description"><?php echo $episode['Episode']['description']; ?></p>
                     </a>
-                    <a class=""
                 </li>
                 <?php
             }

@@ -3,7 +3,8 @@ App::uses('AppModel', 'Model');
 
 class User extends AppModel {
 	var $cacheQueries = false;
-	
+
+	public $belongsTo = array('Episode' => array('foreignKey' => 'current_episode_id'));
 	public $hasMany = array('UserPodcast');
 	
 	public $validate = array(

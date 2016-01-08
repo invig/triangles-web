@@ -43,6 +43,7 @@ CREATE TABLE users (
   `email` VARCHAR(100) DEFAULT NULL,
   `username` VARCHAR(50) DEFAULT NULL,
   `password` VARCHAR(50) DEFAULT NULL,
+  `current_episode_id` INT(20) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
 );
 

@@ -22,10 +22,20 @@ class UsersController extends AppController {
 	public function logout() {
 		$this->redirect($this->Auth->logout());
 	}
-	
+
+	public function waiting_list() {
+
+	}
+
 	public function signup() {
 		Cache::clear();
-		
+
+		$number_of_users = $this->User->find('count');
+
+		if ($number_of_users > 200) {
+			$this->redirect(array('controller' => 'users', 'action' => 'waiting_list'));
+		}
+
 		if ($this->request->is('post')) {
 			$this->request->data['User']['role'] = "user";
 			$this->request->data['User']['verified'] = 0;

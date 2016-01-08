@@ -22,7 +22,8 @@
 
 <script type="text/javascript">
 (function() {
-    var url = "/plays/update_play_state";
+    var time_url = "/plays/update_play_state";
+    var playing_url = "/plays/set_currently_playing";
     var episode_id = <?php echo $episode['Episode']['id']; ?>;
     var player = document.getElementById('player');
     var currentTime = <?php
@@ -62,15 +63,23 @@
         setTimeOnEpisode(currentTime);
     });
 
+    player.addEventListener('play', function(e) {
+       setCurrentlyPlaying(episode_id);
+    });
+
     function setTimeOnEpisode(time) {
         makeRequest('episode_id=' + encodeURIComponent(episode_id) +
                     '&position=' + encodeURIComponent(time) +
-                    '&finished=' + encodeURIComponent(finished)
+                    '&finished=' + encodeURIComponent(finished),
+                    time_url
         );
-        console.log('Playing episode with id: ' + episode_id + ' at time: ' + time + ' finished: ' + finished);
     }
 
-    function makeRequest(sendString) {
+    function setCurrentlyPlaying(episodeId) {
+        makeRequest('episode_id=' + encodeURIComponent(episodeId), playing_url);
+    }
+
+    function makeRequest(sendString, endpoint_url) {
         httpRequest = new XMLHttpRequest();
 
         if (!httpRequest) {
@@ -78,7 +87,7 @@
             return false;
         }
         httpRequest.onreadystatechange = alertContents;
-        httpRequest.open('POST', url);
+        httpRequest.open('POST', endpoint_url);
         httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         httpRequest.send(sendString);
     }
