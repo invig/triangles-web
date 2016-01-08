@@ -1,5 +1,15 @@
 /** App **/
 
+.grid {
+    overflow:hidden;
+    clear:both;
+}
+.grid li {
+    float:left;
+    list-style:none;
+    padding:10px;
+}
+
 .list {
     margin:0;
     padding:0;
