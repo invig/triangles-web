@@ -1,15 +1,15 @@
-<div class="row">
-	<div class="small-12 columns"><h1>Podcasts</h1></div>
+<div class="row columns small-12">
+	<h1 style="margin: 30px 0">Podcasts</h1>
 </div>
 <?php if (isset($current_episode)) : ?>
 	<div class="row">
-		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="small-12 medium-8 medium-centered columns" style="display:block; border:1px solid; padding:10px;">
-			<h4>Recently playing:</h4>
-			<div class="row">
-				<div class="small-2 medium-3 large-2 columns">
+		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="currently-playing-episode small-12 medium-12 large-8 columns">
+			<h3>Recently playing:</h3>
+			<div class="row" style="margin:20px 0 10px 0;">
+				<div class="small-2 columns">
 					<img src="<?php echo $current_episode['Podcast']['artwork_url']; ?>" />
 				</div>
-				<div class="small-10 medium-9 large-10 columns">
+				<div class="small-10 columns">
 					<h4><?php echo $current_episode['Episode']['title']; ?></h4>
 					<p class="description"><?php echo $current_episode['Episode']['description']; ?></p>
 				</div>
@@ -19,15 +19,15 @@
 <?php endif; ?>
 <?php if (count($users_podcasts) > 0) : ?>
 <div class="row">
-	<div class="small-11 columns small-centered" id="podcasts">	
+	<div class="small-12 columns small-centered" id="podcasts">
 		<ul class="grid">
 			<?php 
 			foreach ($users_podcasts as $users_podcast) {
 				$podcast = $users_podcast['Podcast'];
 				?>
-				<li style="margin:10px">
+				<li>
 					<a class="th" href="<?php echo "/episodes/index/". $podcast['id'] ;?>">
-						<img src="<?php echo $podcast['artwork_url']; ?> " height="120px" width="120px">
+						<img src="<?php echo $podcast['artwork_url']; ?> " height="160px" width="160px">
 					</a>
 				</li>
 				<?php				

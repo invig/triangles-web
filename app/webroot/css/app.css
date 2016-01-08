@@ -1,13 +1,39 @@
 /** App **/
 
 .grid {
-    overflow:hidden;
-    clear:both;
+    overflow: hidden;
+    display:block;
+    margin: 50px 0;
 }
 .grid li {
-    float:left;
     list-style:none;
-    padding:10px;
+    float:left;
+}
+
+.grid li img {
+    height: 150px;
+    width: 150px;
+    margin:5px;
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+    .grid li img {
+        height: 180px;
+        width: 180px;
+        margin:10px;
+    }
+}
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .grid li img {
+        height: 220px;
+        width: 220px;
+        margin:10px;
+    }
 }
 
 .list {
@@ -43,6 +69,18 @@
 
 .artwork img {
     max-width: 400px;
+}
+
+.currently-playing-episode {
+    display:block;
+    border:1px solid #eee;
+    padding:10px;
+}
+
+.currently-playing-episode h3{
+    font-size:14pt;
+    color: #666;
+    font-weight:normal;
 }
 
 .podcast-player-wrapper {
