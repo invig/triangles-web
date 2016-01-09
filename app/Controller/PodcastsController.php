@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('Xml', 'Utility');
 
 class PodcastsController extends AppController {
-	public $uses = array('Podcast', 'Feed', 'UserPodcast', 'Episode', 'Play', 'User');
+	public $uses = array('Podcast', 'Feed', 'UserPodcast', 'Episode', 'Play', 'User', 'Xml', 'Utility');
 	public $components = array('EpisodeFeed');
 	
 	public function beforeFilter() {
@@ -20,7 +20,8 @@ class PodcastsController extends AppController {
 		$podcasts = $this->UserPodcast->find('all', array(
 			'conditions' => array(
 				'UserPodcast.user_id' => $this->Auth->user('id')
-			)
+			),
+			'order' => array("Podcast.title" => "ASC")
 		));
 		$this->set('users_podcasts', $podcasts);
 
@@ -49,19 +50,100 @@ class PodcastsController extends AppController {
 		);
 		$this->Feed->save($feed_metadata);
 	}
+
+	public function import () {
+		// TODO: Implmentation.
+
+
+		if (isset($this->request->data['Podcast']['opml_file']['tmp_name']) &&
+			!empty ($this->request->data['Podcast']['opml_file']['tmp_name'])) {
+
+			$file_path = $this->request->data['Podcast']['opml_file']['tmp_name'];
+
+			$xml = Xml::build($file_path);
+			$opml = Xml::toArray($xml);
+
+			$podcasts_to_import = $opml['opml']['body']['outline'];
+			$completed_imports = array();
+			$failed_imports = array();
+
+			foreach ($podcasts_to_import as $podcast) {
+				if ($this->add_from_url($podcast['@xmlUrl'])) {
+					array_push($completed_imports, $podcast);
+				} else {
+					array_push($failed_imports, $podcast);
+				}
+			}
+
+			// Alert the user of any podcasts that failed to import correctly.
+			if (count($failed_imports) > 0) {
+				$failed_message = "Failed to import:";
+
+				foreach ($failed_imports as $failed_podcast) {
+					$failed_message = $failed_message . " " . $failed_podcast['@title'] .",";
+				}
+
+				$failed_message = trim($failed_message, ",");
+				$this->Session->setFlash($failed_message);
+			} else {
+				$this->Session->setFlash("Finished import. Episodes are being crawled and will appear shortly.");
+			}
+
+			// TODO: Trigger the feed crawler.
+
+			$this->redirect(array("controller" => "podcasts", "action" => "index"));
+		} else {
+			$this->failed_import();
+		}
+	}
+
+	private function failed_import() {
+		$this->Session->setFlash("Error reading uploaded file.");
+		$this->redirect(array("controller" => "podcasts", "action" => "index"));
+	}
 		
 	public function add() {
 		if ($this->request->is('post')) {
 			$feed_url = $this->request->data['Podcast']['url'];
 
-			if(filter_var($feed_url, FILTER_VALIDATE_URL) === FALSE) {
-				throw new BadRequestException(__('The URL for you have entered is invalid.'));	
-			} 
-			
-			$podcast_feed_xml = Xml::build($feed_url);
-			$podcast_feed_xml_array = Xml::toArray($podcast_feed_xml);				
-			// CakeLog::write('debug', var_export($podcast_feed_xml_array, true));
-			
+			if ($this->add_from_url($feed_url)) {
+				$this->Session->setFlash(__('Podcast added'));
+
+				// TODO: Trigger feed parse.
+			} else {
+				$this->Session->setFlash(__('Failed to add podcast, please try again'));
+			}
+		}
+
+		$this->redirect(array('controller'=>'podcasts','action'=>'index'));
+	}
+
+	private function add_from_url($feed_url) {
+		if(filter_var($feed_url, FILTER_VALIDATE_URL) === FALSE) {
+			throw new BadRequestException(__('The URL for you have entered is invalid.'));
+		}
+
+		// TODO: Do not import existing.
+		// TODO: If matched on some other criteria, add url as a second feed address.
+		// TODO: What if a podcast changes its name?
+
+		$existing_feed = $this->Feed->find('first', array(
+			'conditions' => array(
+				'url' => $feed_url
+			)
+		));
+
+		if (isset($existing_feed)  && ! empty($existing_feed)) {
+			$podcast['Podcast'] = $existing_feed['Podcast'];
+		} else {
+			try {
+				$podcast_feed_xml = Xml::build($feed_url);
+				$podcast_feed_xml_array = Xml::toArray($podcast_feed_xml);
+			} catch (Exception $e) {
+				CakeLog::write('error', "Failed to import feed at URL: " .  $feed_url);
+				return false;
+			}
+
 			// Check to see if feed / podcast exists
 			$podcast = $this->Podcast->find('first', array(
 				'conditions' => array(
@@ -70,68 +152,91 @@ class PodcastsController extends AppController {
 					)
 				)
 			));
+		}
 
-			// if no then create the feed / podcast
-			if (empty($podcast)) {
-				// Create the podcast
-				$this->Podcast->create();
-				$podcast_metadata = array(
-					'title' => $podcast_feed_xml_array['rss']['channel']['title'],
-					'website_url' => $podcast_feed_xml_array['rss']['channel']['link'],
-					'author' => $podcast_feed_xml_array['rss']['channel']['itunes:author'],
-					'description' => $podcast_feed_xml_array['rss']['channel']['description'],
-					'artwork_url' => $podcast_feed_xml_array['rss']['channel']['itunes:image']['@href']
-				);
-				$this->Podcast->save($podcast_metadata);
-				$podcast_id = $this->Podcast->getLastInsertID();
-				
-				// Create the feeds
+		// if no then create the feed / podcast
+		if (empty($podcast)) {
+			// Create the podcast
+			$this->Podcast->create();
+			$podcast_metadata = array();
+
+			if (isset($podcast_feed_xml_array['rss']['channel']['description'])) {
+				$description = $podcast_feed_xml_array['rss']['channel']['description'];
+				$podcast_metadata['description'] = $description;
+			}
+
+			if (isset($podcast_feed_xml_array['rss']['channel']['itunes:image']['@href'])) {
+				$artwork_url = $podcast_feed_xml_array['rss']['channel']['itunes:image']['@href'];
+				$podcast_metadata['artwork_url'] = $artwork_url;
+			}
+
+			if (isset($podcast_feed_xml_array['rss']['channel']['title'])) {
+				$title = $podcast_feed_xml_array['rss']['channel']['title'];
+				$podcast_metadata['title'] = $title;
+			}
+
+			if (isset($podcast_feed_xml_array['rss']['channel']['link'])) {
+				$website_url = $podcast_feed_xml_array['rss']['channel']['link'];
+				$podcast_metadata['website_url'] = $website_url;
+			}
+
+			if (isset($podcast_feed_xml_array['rss']['channel']['itunes:author'])) {
+				$author = $podcast_feed_xml_array['rss']['channel']['itunes:author'];
+				$podcast_metadata['author'] = $author;
+			}
+
+			$this->Podcast->save($podcast_metadata);
+			$podcast_id = $this->Podcast->getLastInsertID();
+
+			// Create the feeds
+			$this->create_feed($podcast_id, $feed_url);
+			$this->EpisodeFeed->importEpisodesFromFeedArray($podcast_feed_xml_array, $podcast_id);
+		} else {
+			$podcast_id = $podcast['Podcast']['id'];
+
+			// Check for feeds
+			$feeds = $this->Feed->find('all', array('conditions' => array(
+				'podcast_id' => $podcast_id
+			)));
+
+
+			// If there isn't a feed then create the feed
+			if (empty($feeds)) {
 				$this->create_feed($podcast_id, $feed_url);
-				$this->EpisodeFeed->importEpisodesFromFeedArray($podcast_feed_xml_array, $podcast_id);
 			} else {
-				$podcast_id = $podcast['Podcast']['id'];
-				
-				// Check for feeds
-				$feeds = $this->Feed->find('all', array('conditions' => array(
-					'podcast_id' => $podcast_id
-				)));
-				
-				
-				// If there isn't a feed then create the feed
-				if (empty($feeds)) {
-					$this->create_feed($podcast_id, $feed_url);
-				} else {
-					$feed_already_exists = FALSE;
-					
-					foreach ($feeds as $feed) {
-						if ($feed['Feed']['url'] == $feed_url) {
-							$feed_already_exists = TRUE;
-						}
-					}
-					
-					if ($feed_already_exists == FALSE) {
-						$this->create_feed($podcast_id, $feed_url);
-						$this->EpisodeFeed->importEpisodesFromFeedArray($podcast_feed_xml_array, $podcast_id);
+				$feed_already_exists = FALSE;
+
+				foreach ($feeds as $feed) {
+					if ($feed['Feed']['url'] == $feed_url) {
+						$feed_already_exists = TRUE;
 					}
 				}
-			}
 
-			// add the podcast to the user
-			$this->UserPodcast->create();
-			$user_podcast = array(
-				'user_id' => $this->Auth->user('id'),
-				'podcast_id' => $podcast_id,
-				'subscribed' => TRUE,
-				'auto_download' => TRUE
-			);
-			if ($this->UserPodcast->save($user_podcast)) {
-				$this->Session->setFlash(__('Podcast added'));
-			} else {
-				$this->Session->setFlash(__('Failed to add podcast, please try again'));				
+				if ($feed_already_exists == FALSE) {
+					$this->create_feed($podcast_id, $feed_url);
+					$this->EpisodeFeed->importEpisodesFromFeedArray($podcast_feed_xml_array, $podcast_id);
+				}
 			}
-			$this->redirect(array('controller'=>'podcasts','action'=>'index'));			
+		}
+
+		// add the podcast to the user
+		$this->UserPodcast->create();
+		$user_podcast = array(
+			'user_id' => $this->Auth->user('id'),
+			'podcast_id' => $podcast_id,
+			'subscribed' => TRUE,
+			'auto_download' => TRUE
+		);
+		$this->UserPodcast->set($user_podcast);
+		if ($this->UserPodcast->validates()) {
+			if ($this->UserPodcast->save($user_podcast)) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
-			$this->redirect(array('controller'=>'podcasts','action'=>'index'));
+			CakeLog::write('debug', var_export($this->UserPodcast->validationErrors, true));
+			return true;
 		}
 	}
 }

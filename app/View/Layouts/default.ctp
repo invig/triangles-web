@@ -53,7 +53,15 @@
 			</div>
 		</div>
 		<div id="content">
-			<?php echo $this->Session->flash(); ?>
+			<?php
+			$flash = $this->Session->flash();
+			if (! empty($flash)) : ?>
+			<div class="row columns small-12">
+				<div class="errors" style="border:1px solid red; padding:40px; margin: 20px 0">
+					<?php echo $flash; ?>
+				</div>
+			</div>
+			<?php endif; ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">

@@ -4,10 +4,11 @@
     overflow: hidden;
     display:block;
     margin: 50px 0;
+    text-align:center;
 }
 .grid li {
     list-style:none;
-    float:left;
+    display:inline-block;
 }
 
 .grid li img {
@@ -30,8 +31,8 @@
 /* Large and up */
 @media screen and (min-width: 64em) {
     .grid li img {
-        height: 220px;
-        width: 220px;
+        height: 210px;
+        width: 210px;
         margin:10px;
     }
 }

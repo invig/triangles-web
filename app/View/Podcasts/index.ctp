@@ -3,7 +3,7 @@
 </div>
 <?php if (isset($current_episode)) : ?>
 	<div class="row">
-		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="currently-playing-episode small-12 medium-12 large-8 columns">
+		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="currently-playing-episode small-12 medium-12 large-8 large-centered columns">
 			<h3>Recently playing:</h3>
 			<div class="row" style="margin:20px 0 10px 0;">
 				<div class="small-2 columns">
@@ -39,7 +39,9 @@
 <?php else: ?>
 <div class="row">
 	<div class="small-12 columns centered">
-		<p>Podcasts added to Triangles will appear here.</p>
+		<div class="grid">
+			<p>Podcasts added to Triangles will appear here.</p>
+		</div>
 		<?php // TODO: Add a better default state. ?>
 	</div>
 </div>
@@ -63,8 +65,9 @@
 		<div class="tabs-panel" id="import-opml">
 			<div class="small-12 columns small-centered th" id="add_podcast" style="padding:20px;">
 				<h4 style="padding:0 0 20px;">Import podcast list from OPML</h4>
-				<?php echo $this->Form->create('Podcast', array('controller'=>'podcast','action'=>'import'));?>
+				<?php echo $this->Form->create(null, array('controller'=>'podcast','action'=>'import', 'type' => 'file'));?>
 				<?php echo $this->Form->input('opml_file', array('label' => 'OPML File:', 'type' => 'file')); ?>
+				<p>Warning: it may take some time to import your podcasts.</p>
 				<?php echo $this->Form->end(array('class'=>'radius button right', 'label'=>'Import')); ?>
 			</div>
 		</div>
