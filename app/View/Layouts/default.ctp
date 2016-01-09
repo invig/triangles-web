@@ -57,8 +57,12 @@
 			$flash = $this->Session->flash();
 			if (! empty($flash)) : ?>
 			<div class="row columns small-12">
-				<div class="errors" style="border:1px solid red; padding:40px; margin: 20px 0">
-					<?php echo $flash; ?>
+				<div class="alert callout" data-closable>
+					<h5>Alert</h5>
+					<p><?php echo $flash; ?></p>
+					<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 			</div>
 			<?php endif; ?>

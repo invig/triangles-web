@@ -54,3 +54,7 @@
     </div>
 </div>
 <?php endif; ?>
+<div class="row columns small-2 small-centered">
+    <?php echo $this->Paginator->numbers(array('first' => 'First page')); ?>
+</div>
+<div style="padding-top:30px;"></div>

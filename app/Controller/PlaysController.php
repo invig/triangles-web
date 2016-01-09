@@ -21,6 +21,13 @@ class PlaysController extends AppController {
         echo false;
     }
 
+    public function mark_all_finished() {
+        //TODO: Implement
+
+        
+        $this->redirect(array('controller' => 'episodes', 'action' => 'unplayed'));
+    }
+
 
     // API only call to update the play state on an episode.
     public function update_play_state() {

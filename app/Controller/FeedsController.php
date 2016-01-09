@@ -96,16 +96,56 @@ class FeedsController extends AppController {
 					$this->Episode->create();
 					$episode_data = array(
 						'podcast_id' => $podcast['Podcast']['id'],
-						'url' => $episode_xml_array['enclosure']['@url'],
 						'title' => $episode_xml_array['title'],
-						'description' => $episode_xml_array['description'],
-						'episode_length' => $episode_xml_array['itunes:duration'],
 						'episode_date' => $pubDate,
-						'shownotes' => $episode_xml_array['content:encoded'],
-						'guid' => $episode_xml_array['guid']
 					);
 
-					$this->Episode->save($episode_data);
+					if (isset($episode_xml_array['description'])) {
+						$doc = strip_tags($episode_xml_array['description']);
+
+						if (isset($doc) && $doc !== false) {
+							CakeLog::write('debug', 'parse_feed -> Description parsing: ' . $doc );
+							$episode_data['description'] = $doc;
+						} else {
+							CakeLog::write('debug', 'parse_feed -> Description parsing: ' . $episode_xml_array['description'] );
+						}
+
+					}
+
+					// 'url' => $episode_xml_array['enclosure']['@url'],
+
+					if (isset($episode_xml_array['enclosure']['@url'])) {
+						$episode_data['url'] = $episode_xml_array['enclosure']['@url'];
+					} else {
+						CakeLog::write('debug', 'parse_feed -> SKIPPED EPISODE WITH NO CONTENT: ' . $podcast['Podcast']['id'] . ' Title: ' . $episode_xml_array['title']);
+						break;
+					}
+
+					if (isset($episode_xml_array['itunes:duration'])) {
+						$episode_data['episode_length'] = $episode_xml_array['itunes:duration'];
+					}
+
+					if (isset($episode_xml_array['guid'])) {
+						if (is_array($episode_xml_array['guid'])) {
+							$guid = $episode_xml_array['guid']['@'];
+						} else {
+							$guid = $episode_xml_array['guid'];
+						}
+						$episode_data['guid'] = $guid;
+					}
+
+					if (isset($episode_xml_array['content:encoded'])) {
+						$shownotes = $episode_xml_array['content:encoded'];
+						$episode_data['shownotes'] = $shownotes;
+					} else if (isset($episode_xml_array['itunes:summary'])) {
+						$shownotes = $episode_xml_array['itunes:summary'];
+						$episode_data['shownotes'] = $shownotes;
+					}
+
+
+					if (! $this->Episode->save($episode_data)) {
+						CakeLog::write('debug', 'parse_feed -> Failed to save: ' . var_export($episode_data, true));
+					}
 				}
 			}
 
@@ -113,6 +153,8 @@ class FeedsController extends AppController {
 			CakeLog::write('debug', 'parse_feed -> NO FEED PROVIDED');
 			return false;
 		}
+
+		CakeLog::write('debug', 'parse_feed -> FINISHED');
 
 		return true;
 	}

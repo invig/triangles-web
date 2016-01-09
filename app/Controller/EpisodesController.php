@@ -3,10 +3,17 @@ App::uses('AppController', 'Controller');
 
 class EpisodesController extends AppController {
     public $uses = array('Podcast', 'UserPodcast', 'Episode', 'Play');
+    public $components = array('Paginator');
+    public $helpers = array('Paginator');
+
+    public $paginate = array(
+        'limit' => 25,
+        'order' => array(
+            'Episode.episode_date' => 'DESC'
+        )
+    );
 
     public function index($podcast_id) {
-        // TODO: Finish view.
-
         if (!isset($podcast_id)) {
             $this->Session->setFlash(__('Select a podcast to view its episode list'));
             $this->redirect(array('controller'=>'podcasts','action'=>'index'));
@@ -18,14 +25,17 @@ class EpisodesController extends AppController {
            )
         ));
 
-        $unplayed_episodes = $this->Episode->find('all', array(
+        $this->Paginator->settings = array(
             'conditions' => array(
                 'podcast_id' => $podcast_id
             ),
             'order' => array(
                 "episode_date" => 'DESC'
-            )
-        ));
+            ),
+            'limit' => 10
+        );
+
+        $unplayed_episodes = $this->Paginator->paginate('Episode');
 
         $episode_ids = array();
         foreach ($unplayed_episodes as $episode) {
@@ -123,16 +133,18 @@ class EpisodesController extends AppController {
         }
 
         //Get the unfinished episodes for the current user sorted by published date
-        $episodes = $this->Episode->find('all', array(
+        $this->Paginator->settings = array(
             'conditions' => array(
                 'Episode.podcast_id' => $podcast_ids,
                 'NOT' => array(
                     'Episode.id' => $finished_ids
                 )
             ),
-            'order' => array('Episode.episode_date' => 'DESC')
-        ));
+            'order' => array('Episode.episode_date' => 'DESC'),
+            'limit' => 10
+        );
 
+        $episodes = $this->Paginator->paginate('Episode');
         $this->set('episodes', $episodes);
     }
 }
