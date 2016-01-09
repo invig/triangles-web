@@ -2,7 +2,7 @@
 	<h1 style="margin: 30px 0 0">Podcasts</h1>
 </div>
 <?php if (isset($current_episode)) : ?>
-	<div class="row" style="margin:30px 0 0">
+	<div class="row" style="margin-top:30px; margin-bottom: 30px;">
 		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="currently-playing-episode small-12 medium-12 large-8 large-centered columns">
 			<h3>Recently playing:</h3>
 			<div class="row" style="margin:20px 0 10px 0;">
