@@ -1,15 +1,20 @@
 
 <div class="row podcast-preview">
-    <div class="small-11 columns">
+    <div class="small-12 columns">
             <h1 class="">
                 Unplayed Episodes
             </h1>
-            <p>
-                Podcasts your subscribed to that are not finished, ordered by date published.
-            </p>
+            <?php if (count($episodes) <= 0) : ?>
+                <div class="callout row small-centered columns small-12" style="text-align:center; margin:30px 0;">
+                    <p>
+                        Podcasts that you have subscribed to that are not finished will be displayed here ordered by date published.
+                    </p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="small-8 columns small-centered" id="podcasts">
         <ul class="list unplayed-podcast-list">
@@ -17,22 +22,32 @@
             foreach ($episodes as $episode) {
                 ?>
                 <li class="row">
-                    <a class="" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">
-                        <div class="small-3 columns">
-                            <img src="<?php echo "/ssl_proxy.php?url=". rawurlencode( $episode['Podcast']['artwork_url'] ); ?>" />
+                    <div class="small-3 columns">
+                        <img src="<?php echo "/ssl_proxy.php?url=". rawurlencode( $episode['Podcast']['artwork_url'] ); ?>" />
+                    </div>
+                    <div class="small-6 columns">
+                        <h4><?php echo $episode['Episode']['title']; ?></h4>
+                        <p><?php
+                            $description = $episode['Episode']['description'];
+                            $count = strlen($description);
+                            if ($count > 200) {
+                                $description = substr($description, 0, 197)."...";
+                            }
+                            echo $description;
+                            ?>
+                        </p>
+                    </div>
+                    <div class="small-3 columns">
+                        <div class="button-group">
+                            <a class="tiny button success" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">Play</a>
+                            <a class="dropdown button arrow-only success" data-toggle="episode-dropdown-<?php echo $episode['Episode']['id']; ?>">
+                                <span class="show-for-sr">Show menu</span>
+                            </a>
+                            <div class="dropdown-pane" id="episode-dropdown-<?php echo $episode['Episode']['id']; ?>" data-dropdown data-auto-focus="true">
+                                <a class="success" href="/plays/mark_finished/<?php echo $episode['Episode']['id']; ?>">Mark finished</a>
+                            </div>
                         </div>
-                        <div class="small-9 columns">
-                            <h4><?php echo $episode['Episode']['title']; ?></h4>
-                                <p><?php
-                                    $description = $episode['Episode']['description'];
-                                    $count = strlen($description);
-                                    if ($count > 200) {
-                                        $description = substr($description, 0, 197)."...";
-                                    }
-                                    echo $description;
-                                    ?></p>
-                        </div>
-                    </a>
+                    </div>
                 </li>
                 <?php
             }
@@ -48,12 +63,12 @@
     </div>
 </div>
 
-<div class="row columns small-8 small-centered">
-    <div style="padding: 30px 0">
-        <button data-closable class="alert button" data-open="mark-all-played-box">Mark all as played</button>
+<div class="row columns small-3 small-centered">
+    <div style="padding: 30px; text-align:center;">
+        <button data-closable class="button secondary hollow" data-open="mark-all-played-box">Mark all as played</button>
         <div id="mark-all-played-box" class="alert callout reveal"  data-reveal>
-            <h5>This is Important!</h5>
-            <p>This will mark all of your unplayed episodes as played.</p>
+            <h5>Are you sure?</h5>
+            <p>This will mark <span style="font-weight:bold">all</span> of your unplayed episodes as played.</p>
             <a class="alert button" href="/plays/mark_all_finished">I'm sure</a>
             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&times;</span>

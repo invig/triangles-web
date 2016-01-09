@@ -1,8 +1,8 @@
 <div class="row columns small-12">
-	<h1 style="margin: 30px 0">Podcasts</h1>
+	<h1 style="margin: 30px 0 0">Podcasts</h1>
 </div>
 <?php if (isset($current_episode)) : ?>
-	<div class="row">
+	<div class="row" style="margin:30px 0 0">
 		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="currently-playing-episode small-12 medium-12 large-8 large-centered columns">
 			<h3>Recently playing:</h3>
 			<div class="row" style="margin:20px 0 10px 0;">
