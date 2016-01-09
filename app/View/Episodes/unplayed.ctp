@@ -19,7 +19,7 @@
                 <li class="row">
                     <a class="" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">
                         <div class="small-3 columns">
-                            <img src="<?php echo $episode['Podcast']['artwork_url']; ?>" />
+                            <img src="<?php echo "/ssl_proxy.php?url=". rawurlencode( $episode['Podcast']['artwork_url'] ); ?>" />
                         </div>
                         <div class="small-9 columns">
                             <h4><?php echo $episode['Episode']['title']; ?></h4>

@@ -3,7 +3,7 @@
     <div class="small-8 columns small-centered" id="podcasts">
         <div class="row">
             <div class="small-12 columns artwork">
-                <img src="<?php echo $episode['Podcast']['artwork_url']; ?>" />
+                <img src="<?php echo "/ssl_proxy.php?url=". rawurlencode( $episode['Podcast']['artwork_url'] ); ?>" />
             </div>
         </div>
         <div class="row">

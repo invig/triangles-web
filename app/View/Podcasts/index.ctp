@@ -7,7 +7,9 @@
 			<h3>Recently playing:</h3>
 			<div class="row" style="margin:20px 0 10px 0;">
 				<div class="small-2 columns">
-					<img src="<?php echo $current_episode['Podcast']['artwork_url']; ?>" />
+					<img src="<?php
+					echo "/ssl_proxy.php?url=". rawurlencode($current_episode['Podcast']['artwork_url']);
+					?>" />
 				</div>
 				<div class="small-10 columns">
 					<h4><?php echo $current_episode['Episode']['title']; ?></h4>
@@ -27,7 +29,7 @@
 				?>
 				<li>
 					<a class="th" href="<?php echo "/episodes/index/". $podcast['id'] ;?>">
-						<img src="<?php echo $podcast['artwork_url']; ?> " height="160px" width="160px">
+						<img src="<?php echo "/ssl_proxy.php?url=". rawurlencode( $podcast['artwork_url'] ); ?> " height="160px" width="160px">
 					</a>
 				</li>
 				<?php				
