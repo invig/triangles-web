@@ -2,9 +2,11 @@
 App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
+	public $uses = array('User', 'Waiter');
+
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('login', 'signup');
+		$this->Auth->allow('login', 'signup', 'waiting_list');
 	}
 	
 	public function login() {
@@ -24,7 +26,16 @@ class UsersController extends AppController {
 	}
 
 	public function waiting_list() {
-
+		if ($this->request->is('post')) {
+			$this->Waiter->create();
+			if ($this->Waiter->validates($this->request->data)) {
+				if ($this->Waiter->save($this->request->data)) {
+					$position = $this->Waiter->find('count');
+					$this->set('position', $position);
+					$this->set('thanks', true);
+				};
+			}
+		}
 	}
 
 	public function signup() {
@@ -32,7 +43,7 @@ class UsersController extends AppController {
 
 		$number_of_users = $this->User->find('count');
 
-		if ($number_of_users > 200) {
+		if ($number_of_users >= 25) {
 			$this->redirect(array('controller' => 'users', 'action' => 'waiting_list'));
 		}
 
