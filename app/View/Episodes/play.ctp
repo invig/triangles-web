@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row" style="margin-top:30px;">
     <div class="small-8 columns small-centered" id="podcasts">
         <div class="row">
             <div class="small-12 columns artwork">
@@ -7,9 +7,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="small-12 columns episode-description">
+            <div class="small-12 columns small-centered episode-description">
                 <h4><?php echo $episode['Episode']['title']; ?></h4>
-                <p class="description"><?php echo $episode['Episode']['description']; ?></p>
+                <p class="description" style="text-align:center;"><?php echo $episode['Episode']['description']; ?></p>
             </div>
         </div>
         <div class="row">
