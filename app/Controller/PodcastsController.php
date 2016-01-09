@@ -52,9 +52,6 @@ class PodcastsController extends AppController {
 	}
 
 	public function import () {
-		// TODO: Implmentation.
-
-
 		if (isset($this->request->data['Podcast']['opml_file']['tmp_name']) &&
 			!empty ($this->request->data['Podcast']['opml_file']['tmp_name'])) {
 
@@ -123,8 +120,6 @@ class PodcastsController extends AppController {
 			throw new BadRequestException(__('The URL for you have entered is invalid.'));
 		}
 
-		// TODO: Do not import existing.
-		// TODO: If matched on some other criteria, add url as a second feed address.
 		// TODO: What if a podcast changes its name?
 
 		$existing_feed = $this->Feed->find('first', array(
