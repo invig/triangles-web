@@ -83,3 +83,10 @@ CREATE TABLE plays (
   `finished_playing` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `cake_sessions` (
+  `id` varchar(255) NOT NULL DEFAULT '',
+  `data` text,
+  `expires` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
