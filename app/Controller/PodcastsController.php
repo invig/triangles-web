@@ -1,11 +1,21 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('HttpSocket', 'Network/Http');
 App::uses('Xml', 'Utility');
 
 class PodcastsController extends AppController {
-	public $uses = array('Podcast', 'Feed', 'UserPodcast', 'Episode', 'Play', 'User', 'Xml', 'Utility');
+	public $uses = array(
+		'Podcast',
+		'Feed',
+		'UserPodcast',
+		'Episode',
+		'Play',
+		'User'
+	);
+
 	public $components = array('EpisodeFeed');
-	
+
+
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('index');
@@ -115,6 +125,34 @@ class PodcastsController extends AppController {
 		$this->redirect(array('controller'=>'podcasts','action'=>'index'));
 	}
 
+	// Write our own version of feed fetching instead of the default Xml::build implementation because
+	// of a bug in PHP that causes valid SSL certs where host names do not match to fail verification.
+	// Work around is to set teh ssl_verify_host flag to false when making the request.
+	private function get_feed($feed_url) {
+		if (strpos($feed_url, 'http://') === 0 || strpos($feed_url, 'https://') === 0) {
+			try {
+				$socket = new HttpSocket(array(
+					'request' => array('redirect' => 10),
+					'ssl_verify_host'  => false,
+					'ssl_allow_self_signed' => true
+				));
+
+				$response = $socket->get($feed_url);
+				if (!$response->isOk()) {
+					CakeLog::write('error', 'Response from feed: '. $feed_url .' was not ok.');
+					throw new Exception('Response from feed was not ok.', $response->code);
+				} else {
+					$xml_string = $response->body;
+					return Xml::build($xml_string);
+				}
+			} catch (SocketException $e) {
+				CakeLog::write('error', 'Open socket to feed: '.$feed_url.' failed: ' . $e->getMessage() );
+				throw new Exception( 'Connection to feed failed: ' . $e->getMessage(), $e->getCode() );
+			}
+		}
+		return false;
+	}
+
 	private function add_from_url($feed_url) {
 		if(filter_var($feed_url, FILTER_VALIDATE_URL) === FALSE) {
 			throw new BadRequestException(__('The URL for you have entered is invalid.'));
@@ -132,8 +170,11 @@ class PodcastsController extends AppController {
 			$podcast['Podcast'] = $existing_feed['Podcast'];
 		} else {
 			try {
-				$podcast_feed_xml = Xml::build($feed_url);
-				$podcast_feed_xml_array = Xml::toArray($podcast_feed_xml);
+				$response = $this->get_feed($feed_url);
+				if ($response == false) {
+					CakeLog::write('error', "Failed to read feed at URL: " .  $feed_url);
+				}
+				$podcast_feed_xml_array = Xml::toArray($response);
 			} catch (Exception $e) {
 				CakeLog::write('error', "Failed to import feed at URL: " .  $feed_url);
 				return false;
