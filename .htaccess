@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteBase /
+  
+   #Redirects
+   #RewriteCond %{HTTP_HOST} ^trinagles.navitas\.com [NC]
+   #RewriteCond %{ENV:HTTPS} !on [NC]
+   #RewriteRule ^(.*)$ https://triangles.lab82.com/$1 [R,L]
+
+   #Cakephp Config
+   RewriteRule    ^$ app/webroot/    [L]
+   RewriteRule    (.*) app/webroot/$1 [L]
+
+</IfModule>
