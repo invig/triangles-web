@@ -1,6 +1,6 @@
 <!--nocache-->
 <div class="users form row">
-	<div class="columns small-12 th" style="margin-top:10px; padding:20px;">
+	<div class="columns small-12 th cakephp" style="margin-top:10px; padding:20px;">
 		<h1 style="margin-bottom:20px;">Sign up</h1>
 		<?php
 		echo $this->Form->create("User");
