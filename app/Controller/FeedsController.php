@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('HttpSocket', 'Network/Http');
 App::uses('Xml', 'Utility');
 
 class FeedsController extends AppController {
@@ -8,8 +9,6 @@ class FeedsController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow();
-
-		//TODO: Setup a custom auth level for trigger parses.
 	}
 	
 	public function index() {
@@ -45,17 +44,45 @@ class FeedsController extends AppController {
 		}
 	}
 
+	// Write our own version of feed fetching instead of the default Xml::build implementation because
+	// of a bug in PHP that causes valid SSL certs where host names do not match to fail verification.
+	// Work around is to set teh ssl_verify_host flag to false when making the request.
+	private function get_feed($feed_url) {
+		if (strpos($feed_url, 'http://') === 0 || strpos($feed_url, 'https://') === 0) {
+			try {
+				$socket = new HttpSocket(array(
+					'request' => array('redirect' => 10),
+					'ssl_verify_host'  => false,
+					'ssl_allow_self_signed' => true
+				));
+
+				$response = $socket->get($feed_url);
+				if (!$response->isOk()) {
+					CakeLog::write('error', 'Response from feed: '. $feed_url .' was not ok.');
+					throw new Exception('Response from feed was not ok.', $response->code);
+				} else {
+					$xml_string = $response->body;
+					return Xml::build($xml_string);
+				}
+			} catch (SocketException $e) {
+				CakeLog::write('error', 'Open socket to feed: '.$feed_url.' failed: ' . $e->getMessage() );
+				throw new Exception( 'Connection to feed failed: ' . $e->getMessage(), $e->getCode() );
+			}
+		}
+		return false;
+	}
+
+
 	private function parse_feed($feed) {
 		$failures = array();
-		CakeLog::write('debug', 'parse_feed -> Feed ID: ' . $feed['Feed']['id']);
+
 		if (isset($feed) && !empty($feed)) {
-			$podcast_feed_xml = Xml::build($feed['Feed']['url']);
+			$podcast_feed_xml = $this->get_feed($feed['Feed']['url']);
+			if ($podcast_feed_xml == false) {
+				CakeLog::write('error', "Failed to read feed at URL: " .  $feed['Feed']['url']);
+			}
 			$podcast_feed_xml_array = Xml::toArray($podcast_feed_xml);
 			$podcast_feed_xml_array = $podcast_feed_xml_array['rss']['channel'];
-//			CakeLog::write('debug', var_export($podcast_feed_xml_array, true));
-			CakeLog::write('debug', var_export($feed, true));
-
-			// TODO: Process the feed.
 
 			// Get the podcast so we can build the episodes.
 			$podcast = $this->Podcast->find('first', array(
@@ -66,25 +93,34 @@ class FeedsController extends AppController {
 
 			// Catch fetching where no podcast exists.
 			if (!isset($podcast) || empty($podcast)) {
-				CakeLog::write('debug', 'parse_feed -> FAILED TO PARSE FEED WITH ID: ' . $feed['Feed']['id']);
+				CakeLog::write('error', 'Failed to parse feed with ID: ' . $feed['Feed']['id']);
 				return false;
 			}
-
 
 			// Fetch our list of existing episodes in one query.
 			$existing_episodes = $this->Episode->find('all', array(
 				'conditions' => array(
 					'podcast_id' => $podcast['Podcast']['id']
 				),
-				'fields' => array('id','guid', 'title')
+				'fields' => array('id','guid','title')
 			));
 
 			// Build the episodes
 			$episodes_xml_array = $podcast_feed_xml_array['item'];
 
 			foreach ($episodes_xml_array as $episode_xml_array) {
+				if (isset($episode_xml_array['guid'])) {
+					if (is_array($episode_xml_array['guid'])) {
+						$guid = $episode_xml_array['guid']['@'];
+					} else {
+						$guid = $episode_xml_array['guid'];
+					}
+					$episode_xml_guid = $guid;
+				} else {
+					$episode_xml_guid = $podcast['Podcast']['id'].'-'.$episode_xml_array['title'];
+				}
+
 				// Match on any existing episodes
-				$episode_xml_guid = $episode_xml_array['guid'];
 				$matched_episode = $this->match_episode($episode_xml_guid, $existing_episodes);
 
 				// TODO: Do we need to worry about updated feed items?
@@ -112,8 +148,6 @@ class FeedsController extends AppController {
 
 					}
 
-					// 'url' => $episode_xml_array['enclosure']['@url'],
-
 					if (isset($episode_xml_array['enclosure']['@url'])) {
 						$episode_data['url'] = $episode_xml_array['enclosure']['@url'];
 					} else {
@@ -125,15 +159,6 @@ class FeedsController extends AppController {
 						$episode_data['episode_length'] = $episode_xml_array['itunes:duration'];
 					}
 
-					if (isset($episode_xml_array['guid'])) {
-						if (is_array($episode_xml_array['guid'])) {
-							$guid = $episode_xml_array['guid']['@'];
-						} else {
-							$guid = $episode_xml_array['guid'];
-						}
-						$episode_data['guid'] = $guid;
-					}
-
 					if (isset($episode_xml_array['content:encoded'])) {
 						$shownotes = $episode_xml_array['content:encoded'];
 						$episode_data['shownotes'] = $shownotes;
@@ -142,6 +167,7 @@ class FeedsController extends AppController {
 						$episode_data['shownotes'] = $shownotes;
 					}
 
+					$episode_data['guid'] = $guid;
 
 					if (! $this->Episode->save($episode_data)) {
 						CakeLog::write('debug', 'parse_feed -> Failed to save: ' . var_export($episode_data, true));
@@ -150,11 +176,8 @@ class FeedsController extends AppController {
 			}
 
 		} else {
-			CakeLog::write('debug', 'parse_feed -> NO FEED PROVIDED');
 			return false;
 		}
-
-		CakeLog::write('debug', 'parse_feed -> FINISHED');
 
 		return true;
 	}
