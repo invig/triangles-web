@@ -3,7 +3,13 @@ Triangles
 
 Triangles is an open source set of podcast clients and server API.
 
-triangles-web is a web podcast client written in PHP that contains an API for app integrations.
+triangles-web is a web podcast client written in PHP that contains an API for app integrations.  
+
+![Podcasts](http://lab82.com/podcasts.png)
+
+![Unplayed](http://lab82.com/unplayed.png)
+
+![Playing](http://lab82.com/playing.png)
 
 ###Current features:
 
@@ -26,12 +32,6 @@ triangles-web is a web podcast client written in PHP that contains an API for ap
 - Mobile clients that sync data, allow playback, download episodes, and work with bluetooth car audio.
 - Caching and resizing of images to speed up loads.
 - Mark all but most recent episodes of an OMPL import as played.
-
-![Podcasts](http://lab82.com/podcasts.png)
-
-![Unplayed](http://lab82.com/unplayed.png)
-
-![Playing](http://lab82.com/playing.png)
 
 ###Future plans:
 
