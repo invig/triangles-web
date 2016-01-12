@@ -68,8 +68,8 @@
 			<?php endif; ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<div id="footer">
-
+		<div id="footer" style="text-align:center; font-size:0.6em; padding:30px; color: #bbb">
+			<p>Created by Matt Salmon - <a href="http://lab82.com">Lab82</a><br />Source available on <a href="https://github.com/invig/triangles-web">Github</a></p>
 		</div>
 	</div>
 	<?php

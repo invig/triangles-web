@@ -4,7 +4,7 @@
             Recently playing: <a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="">
                 <?php echo $current_episode['Episode']['title']; ?>
             </a>
-            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <button class="close-button show-for-medium" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
