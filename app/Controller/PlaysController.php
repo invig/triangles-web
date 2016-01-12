@@ -21,7 +21,27 @@ class PlaysController extends AppController {
         echo false;
     }
 
-    public function mark_all_finished() {
+    private function all_finished_play_ids() {
+        $user_id = $this->Auth->user('id');
+
+        // Get the finished episode list for the current user
+        $finished_episodes = $this->Play->find('list', array(
+            'conditions' => array(
+                'user_id' => $user_id,
+                'finished_playing' => true
+            ),
+            'fields' => array('episode_id')
+        ));
+
+        $finished_ids = array();
+        foreach ($finished_episodes as $finished_episode) {
+            array_push($finished_ids, $finished_episode);
+        }
+
+        return $finished_ids;
+    }
+
+    private function all_podcasts_ids() {
         $user_id = $this->Auth->user('id');
 
         // Get the podcasts for the current user
@@ -37,20 +57,14 @@ class PlaysController extends AppController {
             array_push($podcast_ids, $podcast['UserPodcast']['podcast_id']);
         }
 
-        // Get the finished episode list for the current user
-        $finished_episodes = $this->Play->find('list', array(
-            'conditions' => array(
-                'user_id' => $user_id,
-                'finished_playing' => true
-            ),
-            'fields' => array('episode_id')
-        ));
+        return $podcast_ids;
+    }
 
-        $finished_ids = array();
+    public function mark_all_finished() {
+        $this->autoRender = false;
 
-        foreach ($finished_episodes as $finished_episode) {
-            array_push($finished_ids, $finished_episode);
-        }
+        $podcast_ids = $this->all_podcasts_ids();
+        $finished_ids = $this->all_finished_play_ids();
 
         //Get the unfinished episodes for the current user sorted by published date
         $episodes = $this->Episode->find('all', array(
@@ -64,7 +78,42 @@ class PlaysController extends AppController {
             'fields' => array("Episode.id")
         ));
 
+        foreach  ($episodes as $episode) {
+            $this->save_finished($episode['Episode']['id']);
+        }
+
+        $this->redirect(array('controller' => 'episodes', 'action' => 'unplayed'));
+    }
+
+    public function mark_all_except_most_recent_finished() {
         $this->autoRender = false;
+
+        $podcast_ids = $this->all_podcasts_ids();
+        $finished_ids = $this->all_finished_play_ids();
+
+        //Get the unfinished episodes for the current user sorted by published date
+        $episodes = $this->Episode->find('all', array(
+            'conditions' => array(
+                'Episode.podcast_id' => $podcast_ids,
+                'NOT' => array(
+                    'Episode.id' => $finished_ids
+                )
+            ),
+            'order' => array('Episode.episode_date' => 'DESC'),
+            'fields' => array("Episode.id", "Episode.podcast_id")
+        ));
+
+        // For all of the episodes,
+        // find the first one for each podcast and remove it so it does not get marked as played
+        // this will only work if the episodes are ordered correctly
+        foreach ($podcast_ids as $podcast_id) {
+            foreach ($episodes as $episode_key => $episode) {
+                if ($episode['Episode']['podcast_id'] == $podcast_id) {
+                    unset($episodes[$episode_key]);
+                    break;
+                }
+            }
+        }
 
         foreach  ($episodes as $episode) {
             $this->save_finished($episode['Episode']['id']);

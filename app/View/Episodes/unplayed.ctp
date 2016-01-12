@@ -74,7 +74,19 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+
+        <button data-closable class="button secondary hollow" data-open="mark-all-except-played-box">Mark most as played</button>
+        <div id="mark-all-except-played-box" class="alert callout reveal"  data-reveal>
+            <h5>Are you sure?</h5>
+            <p>This will mark all of your unplayed episodes as played, except the most recent episode from each podcast.</p>
+            <a class="alert button" href="/plays/mark_all_except_most_recent_finished">I'm sure</a>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
 </div>
+
+
 
 <?php endif; ?>

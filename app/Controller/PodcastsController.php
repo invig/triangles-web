@@ -1,6 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-App::uses('HttpSocket', 'Network/Http');
 App::uses('Xml', 'Utility');
 
 class PodcastsController extends AppController {
