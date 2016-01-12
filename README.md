@@ -3,7 +3,9 @@ Triangles
 
 Triangles is an open source set of podcast clients and server API.
 
-triangles-web is a web podcast client written in PHP that contains an API for app integrations.  
+triangles-web is a web podcast client written in PHP that contains an API for app integrations.
+
+Want to try it out? Visit [triangles.lab82.com](https://triangles.lab82.com) -- (In active development, it could break at any time!)
 
 ![Podcasts](http://lab82.com/podcasts.png)
 
