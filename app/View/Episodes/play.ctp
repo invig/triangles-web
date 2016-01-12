@@ -17,6 +17,15 @@
                 <audio id="player" class="podcast-player" src="<?php echo $episode['Episode']['url']?>" controls="controls"></audio>
             </div>
         </div>
+        <div class="row">
+            <div class="columns small-6 small-centered" style="text-align:center;">
+                <?php if (isset($play) && $play['Play']['finished_playing'] == true) : ?>
+                    <a class="button hollow" href="/plays/mark_unfinished/<?php echo $episode['Episode']['id']; ?>">Mark unfinished</a>
+                <?php else : ?>
+                    <a class="button hollow" href="/plays/mark_finished/<?php echo $episode['Episode']['id']; ?>">Mark finished</a>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
 </div>
 

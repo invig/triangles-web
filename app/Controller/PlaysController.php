@@ -21,45 +21,6 @@ class PlaysController extends AppController {
         echo false;
     }
 
-    private function all_finished_play_ids() {
-        $user_id = $this->Auth->user('id');
-
-        // Get the finished episode list for the current user
-        $finished_episodes = $this->Play->find('list', array(
-            'conditions' => array(
-                'user_id' => $user_id,
-                'finished_playing' => true
-            ),
-            'fields' => array('episode_id')
-        ));
-
-        $finished_ids = array();
-        foreach ($finished_episodes as $finished_episode) {
-            array_push($finished_ids, $finished_episode);
-        }
-
-        return $finished_ids;
-    }
-
-    private function all_podcasts_ids() {
-        $user_id = $this->Auth->user('id');
-
-        // Get the podcasts for the current user
-        $podcasts = $this->UserPodcast->find('all', array(
-            'conditions' => array(
-                'UserPodcast.user_id' => $user_id
-            ),
-            'fields' => array('podcast_id')
-        ));
-
-        $podcast_ids = array();
-        foreach ($podcasts as $podcast) {
-            array_push($podcast_ids, $podcast['UserPodcast']['podcast_id']);
-        }
-
-        return $podcast_ids;
-    }
-
     public function mark_all_finished() {
         $this->autoRender = false;
 
@@ -82,7 +43,7 @@ class PlaysController extends AppController {
             $this->save_finished($episode['Episode']['id']);
         }
 
-        $this->redirect(array('controller' => 'episodes', 'action' => 'unplayed'));
+        $this->redirect($this->referer());
     }
 
     public function mark_all_except_most_recent_finished() {
@@ -119,7 +80,7 @@ class PlaysController extends AppController {
             $this->save_finished($episode['Episode']['id']);
         }
 
-        $this->redirect(array('controller' => 'episodes', 'action' => 'unplayed'));
+        $this->redirect($this->referer());
     }
 
     public function mark_finished($episode_id) {
@@ -127,10 +88,12 @@ class PlaysController extends AppController {
             $this->Session->setFlash("Error: Failed to mark podcast as finished");
         }
 
-        $this->redirect(array('controller' => 'episodes', 'action' => 'unplayed'));
+        $this->redirect($this->referer());
     }
 
-    private function save_finished($episode_id) {
+    public function mark_unfinished($episode_id) {
+        $this->autoRender = false;
+
         $user_id = $this->Auth->user('id');
         $play = $this->Play->find('first', array(
             'conditions' => array(
@@ -149,13 +112,13 @@ class PlaysController extends AppController {
             $data['id'] = $play['Play']['id'];
         }
 
-        $data['finished_playing'] = true;
+        $data['finished_playing'] = false;
 
-        if ($this->Play->save($data)) {
-            return true;
-        } else {
-            return false;
+        if (! $this->Play->save($data)) {
+            $this->Session->setFlash("Error: Failed to mark podcast as unfinished");
         }
+
+        $this->redirect($this->referer());
     }
 
     // API only call to update the play state on an episode.
@@ -198,6 +161,73 @@ class PlaysController extends AppController {
         }
 
         echo false;
+    }
+
+    private function all_finished_play_ids() {
+        $user_id = $this->Auth->user('id');
+
+        // Get the finished episode list for the current user
+        $finished_episodes = $this->Play->find('list', array(
+            'conditions' => array(
+                'user_id' => $user_id,
+                'finished_playing' => true
+            ),
+            'fields' => array('episode_id')
+        ));
+
+        $finished_ids = array();
+        foreach ($finished_episodes as $finished_episode) {
+            array_push($finished_ids, $finished_episode);
+        }
+
+        return $finished_ids;
+    }
+
+    private function all_podcasts_ids() {
+        $user_id = $this->Auth->user('id');
+
+        // Get the podcasts for the current user
+        $podcasts = $this->UserPodcast->find('all', array(
+            'conditions' => array(
+                'UserPodcast.user_id' => $user_id
+            ),
+            'fields' => array('podcast_id')
+        ));
+
+        $podcast_ids = array();
+        foreach ($podcasts as $podcast) {
+            array_push($podcast_ids, $podcast['UserPodcast']['podcast_id']);
+        }
+
+        return $podcast_ids;
+    }
+
+    private function save_finished($episode_id) {
+        $user_id = $this->Auth->user('id');
+        $play = $this->Play->find('first', array(
+            'conditions' => array(
+                'user_id' => $user_id,
+                'episode_id' => $episode_id
+            )
+        ));
+
+        $data = array();
+
+        if (! isset($play) || empty($play)) {
+            $this->Play->create();
+            $data['user_id'] = $user_id;
+            $data['episode_id'] = $episode_id;
+        } else {
+            $data['id'] = $play['Play']['id'];
+        }
+
+        $data['finished_playing'] = true;
+
+        if ($this->Play->save($data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>
