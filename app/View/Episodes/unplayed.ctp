@@ -26,7 +26,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="small-8 columns small-centered" id="podcasts">
+    <div class="small-12 medium-10 large-8 columns small-centered" id="podcasts">
         <ul class="list unplayed-podcast-list">
             <?php
             foreach ($episodes as $episode) {
@@ -71,7 +71,7 @@
         <?php echo $this->Paginator->numbers(array('first' => 'First page')); ?>
     </div>
 </div>
-<div class="row columns small-3 small-centered">
+<div class="row columns small-10 small-centered">
     <div style="padding: 30px; text-align:center;">
         <button data-closable class="button secondary hollow" data-open="mark-all-played-box">Mark all as played</button>
         <div id="mark-all-played-box" class="alert callout reveal"  data-reveal>
