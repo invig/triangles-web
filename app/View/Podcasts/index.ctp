@@ -1,24 +1,18 @@
+<?php if (isset($current_episode)) : ?>
+	<div class="row expanded" data-closable>
+		<div class="callout" style="text-align: center">
+			Recently playing: <a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="">
+				<?php echo $current_episode['Episode']['title']; ?>
+			</a>
+			<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+<?php endif; ?>
 <div class="row columns small-12">
 	<h1 style="margin: 30px 0 0">Podcasts</h1>
 </div>
-<?php if (isset($current_episode)) : ?>
-	<div class="row" style="margin-top:30px; margin-bottom: 30px;">
-		<a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="currently-playing-episode small-12 medium-12 large-8 large-centered columns">
-			<h3>Recently playing:</h3>
-			<div class="row" style="margin:20px 0 10px 0;">
-				<div class="small-2 columns">
-					<img src="<?php
-					echo "/ssl_proxy.php?url=". rawurlencode($current_episode['Podcast']['artwork_url']);
-					?>" />
-				</div>
-				<div class="small-10 columns">
-					<h4><?php echo $current_episode['Episode']['title']; ?></h4>
-					<p class="description"><?php echo $current_episode['Episode']['description']; ?></p>
-				</div>
-			</div>
-		</a>
-	</div>
-<?php endif; ?>
 <?php if (count($users_podcasts) > 0) : ?>
 <div class="row">
 	<div class="small-12 columns small-centered" id="podcasts">

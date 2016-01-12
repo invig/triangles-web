@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class EpisodesController extends AppController {
-    public $uses = array('Podcast', 'UserPodcast', 'Episode', 'Play');
+    public $uses = array('Podcast', 'UserPodcast', 'Episode', 'Play', 'User');
     public $components = array('Paginator');
     public $helpers = array('Paginator');
 
@@ -67,7 +67,7 @@ class EpisodesController extends AppController {
         $this->set('podcast', $podcast);
         $this->set('played_episodes', $played_episodes);
         $this->set('unplayed_episodes', $unplayed_episodes);
-
+        $this->set_most_recent_playing();
     }
 
     public function play($id) {
@@ -91,6 +91,7 @@ class EpisodesController extends AppController {
           $this->set('play', $play);
         }
 
+        $this->set_most_recent_playing();
         $this->set('episode', $episode);
     }
 
@@ -146,6 +147,24 @@ class EpisodesController extends AppController {
 
         $episodes = $this->Paginator->paginate('Episode');
         $this->set('episodes', $episodes);
+        $this->set_most_recent_playing();
+    }
+
+    private function set_most_recent_playing() {
+        // Find the most recently playing episode.
+        $user = $this->User->findById($this->Auth->user('id'));
+        if (isset($user['Episode']['id']) && ! empty($user['Episode']['id'])) {
+            $current_episode = array("Episode" => $user['Episode']);
+            $current_podcast = $this->Podcast->find('first', array(
+                'fields' => array('id', 'artwork_url'),
+                'recursive' => -1,
+                'conditions' => array(
+                    'id' => $current_episode['Episode']['podcast_id']
+                )
+            ));
+            $current_episode['Podcast'] = $current_podcast['Podcast'];
+            $this->set('current_episode', $current_episode);
+        }
     }
 }
 ?>

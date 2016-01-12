@@ -1,3 +1,15 @@
+<?php if (isset($current_episode) && $current_episode['Episode']['id'] != $episode['Episode']['id']) : ?>
+    <div class="row expanded" data-closable>
+        <div class="callout" style="text-align: center">
+            Recently playing: <a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="">
+                <?php echo $current_episode['Episode']['title']; ?>
+            </a>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+<?php endif; ?>
 
 <div class="row" style="margin-top:30px;">
     <div class="small-8 columns small-centered" id="podcasts">
@@ -36,7 +48,7 @@
     var episode_id = <?php echo $episode['Episode']['id']; ?>;
     var player = document.getElementById('player');
     var currentTime = <?php
-        if (isset($play)) {
+        if (isset($play) && isset( $play['Play']['position'] ) &&  $play['Play']['position'] !== null) {
             echo $play['Play']['position'];
         } else {
             echo 0;

@@ -1,3 +1,15 @@
+<?php if (isset($current_episode)) : ?>
+    <div class="row expanded" data-closable>
+        <div class="callout" style="text-align: center">
+            Recently playing: <a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="">
+                <?php echo $current_episode['Episode']['title']; ?>
+            </a>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+<?php endif; ?>
 <div class="row podcast-preview">
     <div class="small-11 columns">
         <img class="small-2 columns" src="<?php echo $podcast['Podcast']['artwork_url']; ?>" />

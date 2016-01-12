@@ -73,13 +73,16 @@
 }
 
 .currently-playing-episode {
-    display:block;
-    border:1px solid #eee;
-    padding:10px;
 }
 
 .currently-playing-episode h3{
     font-size:14pt;
+    color: #666;
+    font-weight:normal;
+}
+
+.currently-playing-episode h4{
+    font-size:12pt;
     color: #666;
     font-weight:normal;
 }
