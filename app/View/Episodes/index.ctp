@@ -54,7 +54,7 @@
                 <li class="row">
                     <div class="small-6 columns">
                          <h4><?php echo $episode['Episode']['title']; ?></h4>
-                        <p class="description"><?php echo $episode['Episode']['description']; ?></p>s
+                        <p class="description"><?php echo $episode['Episode']['description']; ?></p>
                     </div>
                     <div class="small-3 columns">
                         <div class="button-group">
