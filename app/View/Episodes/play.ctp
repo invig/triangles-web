@@ -26,7 +26,7 @@
         </div>
         <div class="row">
             <div class="small-12 columns podcast-player-wrapper">
-                <audio id="player" class="podcast-player" autoplay src="<?php echo $episode['Episode']['url']?>" controls="controls"></audio>
+                <audio id="player" class="podcast-player" src="<?php echo $episode['Episode']['url']?>" controls="controls"></audio>
             </div>
         </div>
         <div class="row">
@@ -67,6 +67,7 @@
     player.addEventListener('canplay', function(e) {
         console.log('Current time: ' + currentTime);
         player.fastSeek(currentTime);
+        player.play();
         checkFinished();
     });
 
