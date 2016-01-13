@@ -26,7 +26,6 @@ Want to try it out? Visit [triangles.lab82.com](https://triangles.lab82.com) -- 
 
 ###Coming soon:
 
-- Better responsiveness for the main menu.
 - Unsubscribe from podcast.
 - Execute feed parser from command line.
 - Parse feeds of new podcasts immediately.

@@ -4,7 +4,7 @@
             Recently playing: <a href="/episodes/play/<?php echo $current_episode['Episode']['id']; ?>" class="">
                 <?php echo $current_episode['Episode']['title']; ?>
             </a>
-            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <button class="close-button show-for-medium" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -35,27 +35,26 @@
                     <div class="small-3 columns">
                         <img src="<?php echo "/ssl_proxy.php?url=". rawurlencode( $episode['Podcast']['artwork_url'] ); ?>" />
                     </div>
-                    <div class="small-6 columns">
+                    <div class="small-9 medium-6 columns">
                         <h4><?php echo $episode['Episode']['title']; ?></h4>
                         <p><?php
                             $description = $episode['Episode']['description'];
                             $count = strlen($description);
-                            if ($count > 200) {
-                                $description = substr($description, 0, 197)."...";
+                            if ($count > 150) {
+                                $description = substr($description, 0, 147)."...";
                             }
                             echo $description;
                             ?>
                         </p>
                     </div>
-                    <div class="small-3 columns">
-                        <div class="button-group">
-                            <a class="tiny button success" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">Play</a>
-                            <a class="dropdown button arrow-only success" data-toggle="episode-dropdown-<?php echo $episode['Episode']['id']; ?>">
-                                <span class="show-for-sr">Show menu</span>
+                    <div class="small-12 medium-3 columns">
+                        <div class="button-group float-right">
+                            <a class="tiny button success" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">
+                                Play
                             </a>
-                            <div class="dropdown-pane" id="episode-dropdown-<?php echo $episode['Episode']['id']; ?>" data-dropdown data-auto-focus="true">
-                                <a class="success" href="/plays/mark_finished/<?php echo $episode['Episode']['id']; ?>">Mark finished</a>
-                            </div>
+                            <a class="tiny button success hollow" href="/plays/mark_finished/<?php echo $episode['Episode']['id']; ?>">
+                                &#10003;
+                            </a>
                         </div>
                     </div>
                 </li>

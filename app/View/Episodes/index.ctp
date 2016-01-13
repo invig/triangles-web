@@ -38,13 +38,12 @@
                     </div>
                     <div class="small-12 medium-3 columns">
                         <div class="button-group float-right">
-                            <a class="tiny button success" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">Play</a>
-                            <a class="dropdown button arrow-only success" data-toggle="episode-dropdown-<?php echo $episode['Episode']['id']; ?>">
-                                <span class="show-for-sr">Show menu</span>
+                            <a class="tiny button success" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">
+                                Play
                             </a>
-                            <div class="dropdown-pane" id="episode-dropdown-<?php echo $episode['Episode']['id']; ?>" data-dropdown data-auto-focus="true">
-                                <a class="success" href="/plays/mark_finished/<?php echo $episode['Episode']['id']; ?>">Mark finished</a>
-                            </div>
+                            <a class="tiny button success hollow" href="/plays/mark_finished/<?php echo $episode['Episode']['id']; ?>">
+                                &#10003;
+                            </a>
                         </div>
                     </div>
                 </li>
@@ -70,13 +69,10 @@
                     </div>
                     <div class="small-12 medium-3 columns">
                         <div class="button-group float-right">
-                            <a class="tiny button success" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">Play</a>
-                            <a class="dropdown button arrow-only success" data-toggle="episode-dropdown-<?php echo $episode['Episode']['id']; ?>">
-                                <span class="show-for-sr">Show menu</span>
+                            <a class="tiny button success hollow" href="/episodes/play/<?php echo $episode['Episode']['id']; ?>">Play</a>
+                            <a class="tiny button success" href="/plays/mark_unfinished/<?php echo $episode['Episode']['id']; ?>">
+                                &#10003;
                             </a>
-                            <div class="dropdown-pane" id="episode-dropdown-<?php echo $episode['Episode']['id']; ?>" data-dropdown data-auto-focus="true">
-                                <a class="success" href="/plays/mark_unfinished/<?php echo $episode['Episode']['id']; ?>">Mark unfinished</a>
-                            </div>
                         </div>
                     </div>
                 </li>
@@ -87,7 +83,7 @@
     </div>
 </div>
 <?php endif; ?>
-<div class="row columns small-6 small-centered" style="text-align:center;">
+<div class="row columns small-12 small-centered" style="text-align:center;">
     <?php echo $this->Paginator->numbers(array('first' => 'First page')); ?>
 </div>
 <div style="padding-top:30px;"></div>
