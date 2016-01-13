@@ -32,6 +32,7 @@ Want to try it out? Visit [triangles.lab82.com](https://triangles.lab82.com) -- 
 - Parse feeds of new podcasts immediately.
 - Sync API
 - Mobile clients that sync data, allow playback, download episodes, and work with bluetooth car audio.
+- Sign in with Twitter / other social graph providers
 - Caching and resizing of images to speed up loads.
 - Mark all but most recent episodes of an OMPL import as played.
 
@@ -43,8 +44,8 @@ Want to try it out? Visit [triangles.lab82.com](https://triangles.lab82.com) -- 
 - Show notes.
 - Social graph.
 - Sharing episodes and sharing specific sections of episodes.
-- Social listening.
-- Social discovery.
+- Social listening (shared listening experiences, + comments?).
+- Social discovery (recommended, most played, people like you enjoy...).
 - Playback analytics.
 - A watch interface.
 
