@@ -9,8 +9,6 @@
 		<?php echo $title_for_layout; ?>
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 	<link rel="apple-touch-icon" href="triangle-icon-64.png">
 	<link rel="apple-touch-icon" sizes="20x20" href="/img/triangle-icon-20.png">
 	<link rel="apple-touch-icon" sizes="24x24" href="/img/triangle-icon-24.png">
@@ -88,15 +86,6 @@
 		echo $this->fetch('script');
 	?>
     <script>
-		var a=document.getElementsByTagName("a");
-		for(var i=0;i<a.length;i++) {
-			if(!a[i].onclick && a[i].getAttribute("target") != "_blank") {
-				a[i].onclick=function() {
-					window.location=this.getAttribute("href");
-					return false;
-				}
-			}
-		}
       $(document).foundation();
     </script>
 </body>
