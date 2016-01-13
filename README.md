@@ -49,3 +49,8 @@ Want to try it out? Visit [triangles.lab82.com](https://triangles.lab82.com) -- 
 - A watch interface.
 
 #Contributions welcome!
+
+#Rights
+
+- The triangle icon used in places on the site has been licensed by Lab82 for it's use only. You should replace or license the icon if reproducing the project:
+ https://www.iconfinder.com/icons/289096/arrow_arrows_line_triangle_icon#size=128.

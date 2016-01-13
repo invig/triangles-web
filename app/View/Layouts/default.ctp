@@ -8,7 +8,21 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<link rel="apple-touch-icon" href="triangle-icon-64.png">
+	<link rel="apple-touch-icon" sizes="20x20" href="/img/triangle-icon-20.png">
+	<link rel="apple-touch-icon" sizes="24x24" href="/img/triangle-icon-24.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/img/triangle-icon-32.png">
+	<link rel="apple-touch-icon" sizes="48x48" href="/img/triangle-icon-48.png">
+	<link rel="apple-touch-icon" sizes="64x64" href="/img/triangle-icon-64.png">
+	<link rel="apple-touch-icon" sizes="128x128" href="/img/triangle-icon-128.png">
+	<link rel="apple-touch-icon" sizes="256x256" href="/img/triangle-icon-256.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="/img/triangle-icon-512.png">
+	<link rel="icon"
+		  type="image/png"
+		  href="/img/triangle-icon-32.png">
 	<?php
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('foundation.min.css');
