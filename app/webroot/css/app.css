@@ -65,11 +65,12 @@
 
 .artwork {
     text-align: center;
-    margin: 10px 0;
 }
 
 .artwork img {
+    width:100%;
     max-width: 400px;
+    padding:0 0 20px 0;
 }
 
 .currently-playing-episode {

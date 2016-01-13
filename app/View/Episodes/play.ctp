@@ -11,11 +11,10 @@
     </div>
 <?php endif; ?>
 
-
 <div class="row" style="margin-top:30px;">
-    <div class="small-8 columns small-centered" id="podcasts">
+    <div class="small-12 medium-8 columns small-centered" id="podcasts">
         <div class="row">
-            <div class="small-12 columns artwork">
+            <div class="small-8 medium-10 small-centered columns artwork">
                 <img src="<?php echo "/ssl_proxy.php?url=". rawurlencode( $episode['Podcast']['artwork_url'] ); ?>" />
             </div>
         </div>
@@ -27,11 +26,11 @@
         </div>
         <div class="row">
             <div class="small-12 columns podcast-player-wrapper">
-                <audio id="player" class="podcast-player" src="<?php echo $episode['Episode']['url']?>" controls="controls"></audio>
+                <audio id="player" class="podcast-player" autoplay src="<?php echo $episode['Episode']['url']?>" controls="controls"></audio>
             </div>
         </div>
         <div class="row">
-            <div class="columns small-6 small-centered" style="text-align:center;">
+            <div class="columns medium-6 small-12 small-centered" style="text-align:center;">
                 <?php if (isset($play) && $play['Play']['finished_playing'] == true) : ?>
                     <a class="button hollow" href="/plays/mark_unfinished/<?php echo $episode['Episode']['id']; ?>">Mark unfinished</a>
                 <?php else : ?>
