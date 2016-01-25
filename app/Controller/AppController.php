@@ -31,30 +31,15 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 
-class AppController extends Controller {	
-	public $components = array('DebugKit.Toolbar','Session', 
-		'Auth' => array(
-	        'authenticate' => array(
-	            'Digest' => array(
-	                'fields' => array('username' => 'email')
-	            ),
-	            'Form' => array(
-	                'fields' => array('username' => 'email')
-	            )
-	        ),
-			'authError' => 'Login or sign up to use Triangles',
-			'loginRedirect' => array('controller'=>'podcasts', 'action'=>'index'),
-			'logoutRedirect' => array('controller'=>'podcasts', 'action'=>'index'),
-			'authorize'=>array('Controller')
-		)
-	);
-	
-	public function beforeFilter() {		
+class AppController extends Controller {
+
+	public $components = array('Session', 'Auth');
+
+	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->set('logged_in', $this->Auth->loggedIn());
 	}
-	
-	
+
 	public function isAuthorized($user) {
 		return true;
 	}

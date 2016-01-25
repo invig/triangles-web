@@ -4,23 +4,41 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 	public $uses = array('User', 'Waiter');
 
+	public $components = array('DebugKit.Toolbar', 'Session',
+		'Auth' => array(
+			'authenticate' => array(
+					'Basic' => array(
+							'fields' => array('username' => 'email')
+					),
+					'Digest' => array(
+							'fields' => array('username' => 'email')
+					),
+					'Form' => array(
+							'fields' => array('username' => 'email')
+					)
+			),
+			'authError' => 'Login or sign up to use Triangles',
+			'loginRedirect' => array('controller'=>'podcasts', 'action'=>'index'),
+			'logoutRedirect' => array('controller'=>'podcasts', 'action'=>'index'),
+			'authorize' => array('controller')
+		)
+	);
+
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('login', 'signup', 'waiting_list');
 	}
-	
+
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
-				$this->redirect(array('controller'=>'podcasts','action'=>'index'));
-				
-				// $this->redirect($this->Auth->redirect());
+				return $this->redirect($this->Auth->redirect());
 			} else {
 				$this->Session->setFlash(__('Invalid username or password, try again'));
 			}
 		}
 	}
-	
+
 	public function logout() {
 		$this->redirect($this->Auth->logout());
 	}
@@ -60,24 +78,24 @@ class UsersController extends AppController {
 			}
 		}
 	}
-	
+
 	public function reset_password($id = null) {
-		throw new NotImplementedException(__('Password reset is not yet implemented'));	
+		throw new NotImplementedException(__('Password reset is not yet implemented'));
 	}
-	
+
 	public function edit($username = null) {
-		// Note: There isn't any admin functionality yet. You can't edit another users account. 
+		// Note: There isn't any admin functionality yet. You can't edit another users account.
 
 		if (empty($username)) {
 			$username = $this->Auth->user('username');
 		}
-		
+
 		// Allow admins to edit other users, but anyone else to only edit their own user.
 		if ($username != $this->Auth->user('username')) {
 			throw new ForbiddenException(__('Unauthorised action'));
 		}
-		
-		// If their is no user - reject.		
+
+		// If their is no user - reject.
 	    $user = $this->User->find('first', array(
 	        'conditions' => array('User.username' => $username)
 	    ));
@@ -107,29 +125,29 @@ class UsersController extends AppController {
 			$this->set('user', $this->User);
 		}
 	}
-	
+
 	public function delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}
-		
+
 		// Allow admins to delete other users, but anyone else to only delete their own user.
 		if ($id != $this->Auth->user('id')) {
 			if ($this->Auth->user('role') != 'Admin') {
 				throw new ForbiddenException(__('Unauthorised action'));
 			}
 		}
-		
+
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
-		
+
 		if ($this->User->delete()) {
 			$this->Session->setFlash(__("User deleted"));
 			$this->redirect(array("action"=>"index"));
 		}
-		
+
 		$this->Session->setFlash(__("User was not deleted"));
 		$this->redirect(array("action"=>"index"));
 	}

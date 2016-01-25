@@ -3,8 +3,9 @@ App::uses('AppController', 'Controller');
 
 class EpisodesController extends AppController {
     public $uses = array('Podcast', 'UserPodcast', 'Episode', 'Play', 'User');
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'RequestHandler');
     public $helpers = array('Paginator');
+
 
     public $paginate = array(
         'limit' => 25,
@@ -64,10 +65,12 @@ class EpisodesController extends AppController {
 
         $unplayed_episodes = array_values($unplayed_episodes);
 
+        $this->set_most_recent_playing();
         $this->set('podcast', $podcast);
         $this->set('played_episodes', $played_episodes);
         $this->set('unplayed_episodes', $unplayed_episodes);
-        $this->set_most_recent_playing();
+        $this->set('_serialize', array('unplayed_episodes', 'played_episodes', 'podcast', 'current_episode'));
+        $this->set('_jsonp', true);
     }
 
     public function play($id) {
@@ -148,6 +151,8 @@ class EpisodesController extends AppController {
         $episodes = $this->Paginator->paginate('Episode');
         $this->set('episodes', $episodes);
         $this->set_most_recent_playing();
+        $this->set('_serialize', array('episodes', 'current_episode'));
+        $this->set('_jsonp', true);
     }
 
     private function set_most_recent_playing() {
