@@ -8,11 +8,11 @@ class FeedsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow();
+		$this->Auth->allow('parse_all_feeds');
 	}
-	
+
 	public function index() {
-		
+
 	}
 
 	public function parse_all_feeds() {
@@ -57,9 +57,11 @@ class FeedsController extends AppController {
 				));
 
 				$response = $socket->get($feed_url);
-				if (!$response->isOk()) {
+				if (! $response->isOk()) {
 					CakeLog::write('error', 'Response from feed: '. $feed_url .' was not ok.');
-					throw new Exception('Response from feed was not ok.', $response->code);
+					CakeLog::write('error', var_export($response, true));
+					//throw new Exception('Response from feed was not ok.', $response->code);
+					return false;
 				} else {
 					$xml_string = $response->body;
 					return Xml::build($xml_string);
@@ -80,6 +82,7 @@ class FeedsController extends AppController {
 			$podcast_feed_xml = $this->get_feed($feed['Feed']['url']);
 			if ($podcast_feed_xml == false) {
 				CakeLog::write('error', "Failed to read feed at URL: " .  $feed['Feed']['url']);
+				return;
 			}
 			$podcast_feed_xml_array = Xml::toArray($podcast_feed_xml);
 			$podcast_feed_xml_array = $podcast_feed_xml_array['rss']['channel'];
