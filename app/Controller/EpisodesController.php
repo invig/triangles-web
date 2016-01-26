@@ -135,19 +135,31 @@ class EpisodesController extends AppController {
             array_push($finished_ids, $finished_episode);
         }
 
-        //Get the unfinished episodes for the current user sorted by published date
-        $this->Paginator->settings = array(
-            'conditions' => array(
+        if (isset($this->request->params['ext']) && $this->request->params['ext'] == 'json') {
+          $episodes = $this->Episode->find('all', array(
+              'conditions' => array(
                 'Episode.podcast_id' => $podcast_ids,
                 'NOT' => array(
                     'Episode.id' => $finished_ids
                 )
-            ),
-            'order' => array('Episode.episode_date' => 'DESC'),
-            'limit' => 10
-        );
+              ),
+              'order' => array('Episode.episode_date' => 'DESC')
+            ));
+        } else {
+          //Get the unfinished episodes for the current user sorted by published date
+          $this->Paginator->settings = array(
+              'conditions' => array(
+                  'Episode.podcast_id' => $podcast_ids,
+                  'NOT' => array(
+                      'Episode.id' => $finished_ids
+                  )
+              ),
+              'order' => array('Episode.episode_date' => 'DESC'),
+              'limit' => 10
+          );
 
-        $episodes = $this->Paginator->paginate('Episode');
+          $episodes = $this->Paginator->paginate('Episode');
+        }
         $this->set('episodes', $episodes);
         $this->set_most_recent_playing();
         $this->set('_serialize', array('episodes', 'current_episode'));
