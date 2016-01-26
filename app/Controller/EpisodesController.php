@@ -160,7 +160,7 @@ class EpisodesController extends AppController {
         if (isset($user['Episode']['id']) && ! empty($user['Episode']['id'])) {
             $current_episode = array("Episode" => $user['Episode']);
             $current_podcast = $this->Podcast->find('first', array(
-                'fields' => array('id', 'artwork_url'),
+                'fields' => array('id', 'artwork_url', 'title'),
                 'recursive' => -1,
                 'conditions' => array(
                     'id' => $current_episode['Episode']['podcast_id']
