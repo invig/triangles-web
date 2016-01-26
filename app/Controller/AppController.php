@@ -37,6 +37,26 @@ class AppController extends Controller {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
+
+		// Handle basic auth for API.
+		if (isset($this->request->params['ext']) && $this->request->params['ext'] == 'json') {
+				$this->Auth->authenticate = array('Basic' => array(
+						'fields' => array('username' => 'email')
+				));
+
+				if (!$this->Auth->login()) {
+						$data = array (
+								'status' => 400,
+								'message' => $this->Auth->authError,
+						);
+						$this->set('data', $data);
+						$this->set('_serialize', 'data');
+
+						$this->viewClass = 'Json';
+						$this->render();
+				}
+		}
+
 		$this->set('logged_in', $this->Auth->loggedIn());
 	}
 

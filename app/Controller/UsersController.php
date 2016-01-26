@@ -20,7 +20,7 @@ class UsersController extends AppController {
 			'authError' => 'Login or sign up to use Triangles',
 			'loginRedirect' => array('controller'=>'podcasts', 'action'=>'index'),
 			'logoutRedirect' => array('controller'=>'podcasts', 'action'=>'index'),
-			'authorize' => array('controller')
+			'authorize' => array('Controller')
 		)
 	);
 

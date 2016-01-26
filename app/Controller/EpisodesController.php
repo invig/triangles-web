@@ -6,7 +6,6 @@ class EpisodesController extends AppController {
     public $components = array('Paginator', 'RequestHandler');
     public $helpers = array('Paginator');
 
-
     public $paginate = array(
         'limit' => 25,
         'order' => array(
